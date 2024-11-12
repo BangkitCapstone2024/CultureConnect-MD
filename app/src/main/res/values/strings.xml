@@ -1,12 +1,9 @@
 <resources>
     <string name="app_name">Culture Connect</string>
-    <string name="content_description">Content Description</string>
-    <style name="first_title">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">Temukan pesona Solo yang autentik dengan panduan lengkap</item>
-        <item name="android:textSize">24sp</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textStyle">bold</item>
-    </style>
+    <string name="description">Description</string>
+    <string name="pasar_legi">Pasar Legi</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="image_of_item_row">Image of item row</string>
+    <string name="dummy">Pasar Legi</string>
+    <string name="bookmark_icon">Bookmark Icon</string>
 </resources>
