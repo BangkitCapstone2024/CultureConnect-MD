@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Culture Connect</string>
+    <string name="description">Description</string>
+    <string name="pasar_legi">Pasar Legi</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="image_of_item_row">Image of item row</string>
+    <string name="dummy">Pasar Legi</string>
+    <string name="bookmark_icon">Bookmark Icon</string>
 </resources>
