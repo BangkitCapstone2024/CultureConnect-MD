@@ -5,11 +5,12 @@ plugins {
 
 android {
     namespace = "app.culturedev.cultureconnect"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "app.culturedev.cultureconnect"
         minSdk = 29
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
