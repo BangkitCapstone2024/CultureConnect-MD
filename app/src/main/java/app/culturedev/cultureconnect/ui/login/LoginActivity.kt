@@ -21,6 +21,6 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        ColorUtils.changeStatusBarColor(window, "#980000")
+        ColorUtils.changeStatusBarColor(window, "#CC444B")
     }
 }
