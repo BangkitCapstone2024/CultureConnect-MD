@@ -62,11 +62,12 @@
             android:layout_width="329dp"
             android:layout_height="60dp"
             android:layout_marginTop="55dp"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvKet">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <app.culturedev.cultureconnect.ui.customview.EmailCustomView
                 android:id="@+id/ed_input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,12 +108,14 @@
             android:id="@+id/textInputLayout2"
             android:layout_width="325dp"
             android:layout_height="62dp"
+            app:passwordToggleEnabled="true"
             android:layout_marginTop="8dp"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <app.culturedev.cultureconnect.ui.customview.PasswordCustomView
                 android:id="@+id/ed_input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
