@@ -6,4 +6,16 @@
     <string name="image_of_item_row">Image of item row</string>
     <string name="dummy">Pasar Legi</string>
     <string name="bookmark_icon">Bookmark Icon</string>
+    <string name="button">Continue with Google</string>
+    <string name="desc">"Atau masuk dengan "</string>
+    <string name="content_description">Animation\n</string>
+    <string name="email">Email\n</string>
+    <string name="input_your_email">Input your email</string>
+    <string name="password">Password</string>
+    <string name="input_your_password">Input your password</string>
+    <string name="login">Login</string>
+    <string name="masuk_ke_akun_anda">Masuk ke Akun Anda</string>
+    <string name="atau_sudah_punya_akun_register_disini">Atau sudah punya akun ?</string>
+    <string name="google_logo">Google Logo</string>
+    <string name="registrasi">Registrasi</string>
 </resources>
