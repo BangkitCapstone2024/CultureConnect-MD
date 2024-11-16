@@ -1,4 +1,4 @@
-package app.culturedev.cultureconnect.ui.login
+package app.culturedev.cultureconnect.ui.auth.login
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
