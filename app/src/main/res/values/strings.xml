@@ -23,4 +23,8 @@
     <string name="hint_username">Input your username</string>
     <string name="registrasi_dengan_google">Registrasi dengan Google</string>
     <string name="atau_registrasi_dengan">Atau registrasi dengan</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="splash1">"Jelajahi Destinasi menarik,kuliner khas,dan pengalaman budaya lokal dalam genggaman anda "</string>
+    <string name="next">Next</string>
 </resources>
