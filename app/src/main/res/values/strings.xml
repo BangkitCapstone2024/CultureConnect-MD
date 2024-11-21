@@ -24,6 +24,9 @@
     <string name="registrasi_dengan_google">Registrasi dengan Google</string>
     <string name="atau_registrasi_dengan">Atau registrasi dengan</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="splash1">"Jelajahi Destinasi menarik,kuliner khas,dan pengalaman budaya lokal dalam genggaman anda "</string>
-    <string name="next">Next</string>
+    <string name="splash1">Temukan kafe yang cocok untuk Anda di kota Solo!</string>
+    <string name="next">Lanjutkan > </string>
+    <string name="splash2">Temukan pesona Solo yang autentik dengan panduan lengkap</string>
+    <string name="splash3">Pilih preferensi Anda kopi, suasana, fasilitas, dan lainnya agar kami bisa merekomendasikan kafe yang sempurna.</string>
+    <string name="selesai">Selesai</string>
 </resources>
