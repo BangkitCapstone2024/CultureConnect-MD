@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C55A5F"
+    android:background="#FFFFFF"
     tools:context=".ui.splash.onboarding.FirstScreenFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,30 +14,30 @@
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="407dp"
-            android:layout_height="465dp"
+            android:layout_height="430dp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/splash2"
+            android:src="@drawable/splash1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView9"
-            android:layout_width="382dp"
-            android:layout_height="145dp"
+            android:layout_width="377dp"
+            android:layout_height="111dp"
             android:layout_marginTop="8dp"
-            android:padding="15dp"
             android:fontFamily="@font/poppins"
+            android:padding="15dp"
             android:text="@string/splash1"
-            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.551"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,8 +46,7 @@
             android:backgroundTint="@android:color/transparent"
             android:fontFamily="@font/poppins"
             android:text="@string/next"
-            android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
