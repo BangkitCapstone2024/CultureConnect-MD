@@ -1,5 +1,6 @@
 package app.culturedev.cultureconnect.ui.splash.onboarding
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,13 +17,21 @@ class ThirdScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentThirdScreenBinding.inflate(layoutInflater, container, false)
-        initViews()
+        afterOnBoarding()
         return binding.root
     }
 
-    private fun initViews() {
+    private fun afterOnBoarding() {
         binding.btnFinish.setOnClickListener {
             startActivity(Intent(context, LoginActivity::class.java))
+            onBoardingFinished()
         }
+    }
+
+    private fun onBoardingFinished() {
+        val sharedPref = requireActivity().getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
+        val editor = sharedPref?.edit()
+        editor?.putBoolean("Finished", true)
+        editor?.apply()
     }
 }
