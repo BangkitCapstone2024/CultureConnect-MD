@@ -1,13 +1,8 @@
 package app.culturedev.cultureconnect.ui
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import app.culturedev.cultureconnect.R
 import app.culturedev.cultureconnect.databinding.ActivityMainBinding
