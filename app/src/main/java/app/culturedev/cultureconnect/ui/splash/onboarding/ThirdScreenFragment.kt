@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import app.culturedev.cultureconnect.databinding.FragmentThirdScreenBinding
+import app.culturedev.cultureconnect.ui.MainActivity
 import app.culturedev.cultureconnect.ui.auth.login.LoginActivity
 
 class ThirdScreenFragment : Fragment() {
@@ -23,7 +24,7 @@ class ThirdScreenFragment : Fragment() {
 
     private fun afterOnBoarding() {
         binding.btnFinish.setOnClickListener {
-            startActivity(Intent(context, LoginActivity::class.java))
+            startActivity(Intent(context, MainActivity::class.java))
             onBoardingFinished()
         }
     }

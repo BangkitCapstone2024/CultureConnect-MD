@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import app.culturedev.cultureconnect.R
+import app.culturedev.cultureconnect.ui.MainActivity
 import app.culturedev.cultureconnect.ui.adapter.ViewPagerAdapter
-import app.culturedev.cultureconnect.ui.auth.login.LoginActivity
 
 
 class ViewPagerFragment : Fragment() {
@@ -20,7 +20,7 @@ class ViewPagerFragment : Fragment() {
     ): View? {
 
         if (onBoardingFinished()) {
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
+            startActivity(Intent(requireContext(), MainActivity::class.java))
             requireActivity().finish()
         }
 
