@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import app.culturedev.cultureconnect.databinding.FragmentThirdScreenBinding
 import app.culturedev.cultureconnect.ui.MainActivity
-import app.culturedev.cultureconnect.ui.auth.login.LoginActivity
 
 class ThirdScreenFragment : Fragment() {
     private lateinit var binding: FragmentThirdScreenBinding
