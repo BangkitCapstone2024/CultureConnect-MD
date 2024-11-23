@@ -1,5 +1,6 @@
 package app.culturedev.cultureconnect.ui.auth.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import app.culturedev.cultureconnect.R
 import app.culturedev.cultureconnect.databinding.ActivityLoginBinding
 import app.culturedev.cultureconnect.helper.ColorUtils
+import app.culturedev.cultureconnect.ui.auth.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -21,6 +23,13 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        toRegister()
         ColorUtils.changeStatusBarColor(window, "#CC444B")
+    }
+
+    private fun toRegister() {
+        binding.tvLinkRegis.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+        }
     }
 }
