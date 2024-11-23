@@ -19,9 +19,9 @@
             android:name=".ui.auth.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailActivity"
+            android:name=".ui.detail.DetailActivity"
             android:exported="false" />
-        <activity android:name=".ui.splash.WelcomeActivity"
+         <activity android:name=".ui.splash.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
