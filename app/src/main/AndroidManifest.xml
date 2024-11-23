@@ -19,10 +19,7 @@
             android:name=".ui.auth.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name=".ui.detail.DetailActivity"
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"

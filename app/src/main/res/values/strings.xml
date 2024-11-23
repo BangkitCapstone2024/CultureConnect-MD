@@ -1,5 +1,75 @@
 <resources>
     <string name="app_name">Culture Connect</string>
+    <string name="content_description">Content Description</string>
+
+    <style name="first_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Temukan pesona Solo yang autentik dengan panduan lengkap</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+<!--    Home Fragment-->
+    <style name="username">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Username</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <string name="search_hint">Search here …</string>
+
+    <style name="recommendationTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Recommendation for you</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--    Bottom Menu-->
+    <string name="home">Home</string>
+    <string name="maps">Maps</string>
+    <string name="favorite">Favorite</string>
+    <string name="settings">Settings</string>
+
+    <!--    Detail Activity-->
+    <style name="detailTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Kraton Solo</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="detailDescription">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Kraton Solo adalah sebuah kompleks istana yang terletak di
+            Surakarta, Jawa Tengah, Indonesia. Kraton ini merupakan pusat pemerintahan dan tempat
+            tinggal bagi Sultan Surakarta dan keluarganya. Kraton ini juga merupakan pusat
+            kebudayaan bagi masyarakat Jawa Surakarta.
+        </item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+<!--    Favorite Fragment-->
+    <style name="favoriteTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Favorite</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <string name="description">Description</string>
     <string name="pasar_legi">Pasar Legi</string>
     <string name="bookmark">Bookmark</string>
@@ -8,7 +78,7 @@
     <string name="bookmark_icon">Bookmark Icon</string>
     <string name="button">Masuk dengan Google</string>
     <string name="desc">"Atau masuk dengan "</string>
-    <string name="content_description">Animation\n</string>
+    <!--    <string name="content_description">Animation\n</string>-->
     <string name="email">Email\n</string>
     <string name="input_your_email">Input your email</string>
     <string name="password">Password</string>
