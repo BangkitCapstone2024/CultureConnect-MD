@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/home">
 
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/home"
         android:name="app.culturedev.cultureconnect.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/favoriteFragment"
+        android:id="@+id/favorite"
         android:name="app.culturedev.cultureconnect.ui.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
