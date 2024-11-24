@@ -54,4 +54,19 @@ dependencies {
     //VIEWPAGER
     implementation(libs.androidx.viewpager2)
     implementation(libs.dotsindicator)
+
+    //GLIDE
+    implementation(libs.glide)
+
+    //RETROFIT
+    implementation(libs.retrofit)
+
+    //OKHTTP
+    implementation(libs.okhttp)
+
+    //LOGGING INTERCEPTOR
+    implementation(libs.logging.interceptor)
+
+    //RETROFIT GSON
+    implementation(libs.converter.gson)
 }
