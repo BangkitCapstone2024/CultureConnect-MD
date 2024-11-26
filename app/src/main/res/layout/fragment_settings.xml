@@ -1,16 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.settings.SettingsFragment">
 
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/tv_pengaturan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/inter"
+        android:text="@string/pengaturan"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnProfile"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="156dp"
+        android:backgroundTint="#A25252"
+        android:fontFamily="@font/poppins"
+        android:text="@string/akun_anda"
+        android:textColor="@color/white"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pengaturan" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:contentDescription="@string/profile"
+        android:layout_width="30dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/profiles"
+        app:layout_constraintStart_toStartOf="@+id/btnProfile"
+        app:layout_constraintTop_toTopOf="@+id/btnProfile" />
+
+    <ImageView
+        android:id="@+id/ivProfileImage"
+        android:layout_width="110dp"
+        android:layout_height="113dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/profile"
+        android:src="@drawable/profiles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pengaturan" />
+
+    <TextView
+        android:id="@+id/tvProfileName"
+        android:layout_width="240dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/template"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pengaturan" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="240dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins"
+        android:text="@string/email"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileName" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

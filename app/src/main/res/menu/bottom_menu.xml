@@ -10,4 +10,10 @@
         android:id="@+id/favorite"
         android:icon="@drawable/baseline_bookmark_24"
         android:title="@string/favorite" />
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/profiles"
+        android:title="@string/profile">
+    </item>
 </menu>
