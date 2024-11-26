@@ -7,10 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import app.culturedev.cultureconnect.R
 import app.culturedev.cultureconnect.databinding.FragmentSettingsBinding
+import app.culturedev.cultureconnect.helper.ColorUtils
 
 
 class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        ColorUtils.changeStatusBarColor(requireActivity().window, "#A25252")
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
