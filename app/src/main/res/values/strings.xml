@@ -99,4 +99,12 @@
     <string name="splash2">Temukan pesona Solo yang autentik dengan panduan lengkap</string>
     <string name="splash3">Pilih preferensi Anda kopi, suasana, fasilitas, dan lainnya agar kami bisa merekomendasikan kafe yang sempurna.</string>
     <string name="selesai">Selesai</string>
+    <string name="pengaturan">Your Profile </string>
+    <string name="profile">Profile</string>
+    <string name="akun_anda">Account Information</string>
+    <string name="template">Harits</string>
+    <string name="data_diri">Data Diri</string>
+    <string name="nama_lengkap_anda">Nama Lengkap anda</string>
+    <string name="email_anda">Email Anda</string>
+    <string name="logout">Logout</string>
 </resources>
