@@ -22,5 +22,12 @@ class RegisterActivity : AppCompatActivity() {
             insets
         }
         ColorUtils.changeStatusBarColor(window, "#CC444B")
+        navigateUp()
+    }
+
+    private fun navigateUp() {
+        binding.btnBackLogin.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 }

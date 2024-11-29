@@ -83,7 +83,7 @@
     <string name="input_your_email">Input your email</string>
     <string name="password">Password</string>
     <string name="input_your_password">Input your password</string>
-    <string name="login">Login</string>
+    <string name="login">MASUK</string>
     <string name="masuk_ke_akun_anda">Masuk ke Akun Anda</string>
     <string name="atau_sudah_punya_akun_register_disini">Atau sudah punya akun ?</string>
     <string name="google_logo">Google Logo</string>
@@ -95,8 +95,24 @@
     <string name="atau_registrasi_dengan">Atau registrasi dengan</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="splash1">Temukan kafe yang cocok untuk Anda di kota Solo!</string>
-    <string name="next">Lanjutkan > </string>
+    <string name="next">Lanjutkan  </string>
     <string name="splash2">Temukan pesona Solo yang autentik dengan panduan lengkap</string>
     <string name="splash3">Pilih preferensi Anda kopi, suasana, fasilitas, dan lainnya agar kami bisa merekomendasikan kafe yang sempurna.</string>
     <string name="selesai">Selesai</string>
+    <string name="pengaturan">Your Profile </string>
+    <string name="profile">Profile</string>
+    <string name="akun_anda">Account Information</string>
+    <string name="template">Harits</string>
+    <string name="data_diri">Data Diri</string>
+    <string name="nama_lengkap_anda">Nama Lengkap anda</string>
+    <string name="email_anda">Email Anda</string>
+    <string name="logout">Logout</string>
+    <string name="masuk_akun">Masuk Akun</string>
+    <string name="rules1">Untuk masuk akun , masukkan Email dan Kata Sandi</string>
+    <string name="forgot">Lupa Kata Sandi ?</string>
+    <string name="back"><![CDATA[<]]></string>
+    <string name="data_akun">Data Akun</string>
+    <string name="Nama">Nama</string>
+    <string name="belum_punya_akun_daftar">Belum punya akun ? daftar</string>
+    <string name="konfirmasi_password">Konfirmasi Password</string>
 </resources>
