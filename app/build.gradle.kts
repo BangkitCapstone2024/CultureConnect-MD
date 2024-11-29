@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -15,6 +16,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String","BASE_URL" , "${project.findProperty("BASE_URL")}")
     }
 
     buildTypes {
@@ -36,6 +38,7 @@ android {
 
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -54,4 +57,19 @@ dependencies {
     //VIEWPAGER
     implementation(libs.androidx.viewpager2)
     implementation(libs.dotsindicator)
+
+    //GLIDE
+    implementation(libs.glide)
+
+    //RETROFIT
+    implementation(libs.retrofit)
+
+    //OKHTTP
+    implementation(libs.okhttp)
+
+    //LOGGING INTERCEPTOR
+    implementation(libs.logging.interceptor)
+
+    //RETROFIT GSON
+    implementation(libs.converter.gson)
 }
