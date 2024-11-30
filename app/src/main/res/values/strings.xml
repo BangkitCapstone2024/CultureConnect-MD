@@ -115,4 +115,10 @@
     <string name="Nama">Nama</string>
     <string name="belum_punya_akun_daftar">Belum punya akun ? daftar</string>
     <string name="konfirmasi_password">Konfirmasi Password</string>
+    <string name="ceritakan_harimu">Ceritakan harimu</string>
+    <string name="ceritakan_desc">Ceritakan harimu dengan satu kalimat</string>
+    <string name="tulis_disini">Tulis disini</string>
+    <string name="kirim">Kirim</string>
+    <string name="hasil_mood">Hasil Mood</string>
+    <string name="kata_kata">Kata - Kata</string>
 </resources>
