@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.culturedev.cultureconnect.databinding.FragmentHomeBinding
+import app.culturedev.cultureconnect.helper.ColorUtils
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -33,5 +34,6 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
         }
 
+        ColorUtils.changeStatusBarColor(requireActivity().window, "#1B3E3B")
     }
 }
