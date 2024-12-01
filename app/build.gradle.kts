@@ -54,6 +54,9 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation (libs.translate)
+
     //VIEWPAGER
     implementation(libs.androidx.viewpager2)
     implementation(libs.dotsindicator)

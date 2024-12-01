@@ -7,6 +7,11 @@
         android:title="@string/home" />
 
     <item
+        android:id="@+id/maps"
+        android:icon="@drawable/baseline_map_24"
+        android:title="@string/maps" />
+
+    <item
         android:id="@+id/favorite"
         android:icon="@drawable/baseline_bookmark_24"
         android:title="@string/favorite" />

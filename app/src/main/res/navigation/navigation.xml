@@ -13,6 +13,12 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/maps"
+        android:name="app.culturedev.cultureconnect.ui.maps.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
+
+    <fragment
         android:id="@+id/favorite"
         android:name="app.culturedev.cultureconnect.ui.favorite.FavoriteFragment"
         android:label="fragment_favorite"
