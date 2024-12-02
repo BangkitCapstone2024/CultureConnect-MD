@@ -1,5 +1,6 @@
 package app.culturedev.cultureconnect.ui.recomendation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,13 @@ class MoodResultActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        getCafeRecommendations()
+    }
+
+    private fun getCafeRecommendations() {
+        binding.btnGetRecCafe.setOnClickListener {
+            startActivity(Intent(this@MoodResultActivity, CafeResultActivity::class.java))
         }
     }
 }
