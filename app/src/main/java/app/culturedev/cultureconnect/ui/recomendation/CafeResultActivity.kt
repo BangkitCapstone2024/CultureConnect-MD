@@ -22,6 +22,10 @@ class CafeResultActivity : AppCompatActivity() {
             insets
         }
         backToSendMood()
+
+        with(binding){
+            svCafe.setupWithSearchBar(sbSearchCafe)
+        }
     }
 
     private fun backToSendMood() {
