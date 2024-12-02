@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="118dp"
+        android:layout_width="159dp"
         android:layout_height="27dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/poppins"
