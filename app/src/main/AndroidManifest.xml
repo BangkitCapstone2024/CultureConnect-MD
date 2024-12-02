@@ -16,6 +16,13 @@
             android:name=".ui.auth.register.RegisterActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.recomendation.DescribeMoodActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.recomendation.MoodResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.auth.login.LoginActivity"
             android:exported="false" />
         <activity
