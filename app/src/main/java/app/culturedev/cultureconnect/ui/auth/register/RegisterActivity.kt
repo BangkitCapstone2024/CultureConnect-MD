@@ -8,21 +8,23 @@ import androidx.core.view.WindowInsetsCompat
 import app.culturedev.cultureconnect.R
 import app.culturedev.cultureconnect.databinding.ActivityRegisterBinding
 import app.culturedev.cultureconnect.helper.ColorUtils
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
+    private lateinit var auth: FirebaseAuth;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
         ColorUtils.changeStatusBarColor(window, "#CC444B")
         navigateUp()
+
+        auth = Firebase.auth
     }
 
     private fun navigateUp() {
