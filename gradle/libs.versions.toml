@@ -29,6 +29,8 @@ translate = "17.0.3"
 datastorePreferences = "1.1.1"
 lifecycleLivedataKtx = "2.8.6"
 lifecycleViewmodelKtx = "2.8.6"
+googleGmsGoogleServices = "4.4.2"
+firebaseAuth = "23.1.0"
 
 
 [libraries]
@@ -62,8 +64,10 @@ secrets-gradle-plugin = { module = "com.google.android.libraries.mapsplatform.se
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+googleGmsGoogleServices = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 
