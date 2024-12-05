@@ -1,33 +1,64 @@
 package app.culturedev.cultureconnect.ui.auth.register
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import app.culturedev.cultureconnect.R
 import app.culturedev.cultureconnect.databinding.ActivityRegisterBinding
 import app.culturedev.cultureconnect.helper.ColorUtils
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.auth
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
+    private lateinit var auth: FirebaseAuth
+    private var customToken: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
         ColorUtils.changeStatusBarColor(window, "#CC444B")
         navigateUp()
+
+        auth = Firebase.auth
     }
 
     private fun navigateUp() {
         binding.btnBackLogin.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
+    }
+
+    private fun startSignIn() {
+        customToken?.let {
+            auth.signInWithCustomToken(it)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "signInWithCustomToken:success")
+                        val user = auth.currentUser
+                        updateUI(user)
+                    } else {
+                        Log.w(TAG, "signInWithCustomToken:failure", task.exception)
+                        Toast.makeText(
+                            baseContext,
+                            "Authentication failed.",
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                        updateUI(null)
+                    }
+                }
+        }
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+    }
+
+    companion object {
+        private const val TAG = "CustomAuthActivity"
     }
 }

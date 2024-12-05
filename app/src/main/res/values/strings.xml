@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Culture Connect</string>
     <string name="content_description">Content Description</string>
 
@@ -11,11 +12,20 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-<!--    Home Fragment-->
+    <!--    Home Fragment-->
+    <style name="welcome">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Have a Great Day !</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="username">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">Username</item>
+        <item name="android:text">Denis</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
@@ -24,10 +34,73 @@
     <string name="search_hint">Search here …</string>
 
     <style name="recommendationTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Recommendation cafe for you</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="itemTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">List all cafe</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--    Card View Recommendation-->
+    <style name="tv_recommendation_title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Pixel Coffee &amp; Kitchen</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="tv_recommendation_rating">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">4,6 (1.037)</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="tv_recommendation_price">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Kedai Kopi - Rp 25-50 rb</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="btn_direction">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">Recommendation for you</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:text">Direction</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="btn_detail">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">See detail</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--    Card View Item -->
+    <style name="tv_title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Namu Korean Cafe Solo</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -60,12 +133,22 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-<!--    Favorite Fragment-->
-    <style name="favoriteTitle">
+    <!--    Favorite Fragment-->
+    <style name="bookmarkTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">Favorite</item>
+        <item name="android:text">Bookmark</item>
         <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+<!--    Maps Fragment-->
+    <style name="maps_title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Nearest Cafe</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -95,7 +178,7 @@
     <string name="atau_registrasi_dengan">Atau registrasi dengan</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="splash1">Temukan kafe yang cocok untuk Anda di kota Solo!</string>
-    <string name="next">Lanjutkan  </string>
+    <string name="next">See Caffe</string>
     <string name="splash2">Temukan pesona Solo yang autentik dengan panduan lengkap</string>
     <string name="splash3">Pilih preferensi Anda kopi, suasana, fasilitas, dan lainnya agar kami bisa merekomendasikan kafe yang sempurna.</string>
     <string name="selesai">Selesai</string>
@@ -119,6 +202,9 @@
     <string name="ceritakan_desc">Ceritakan harimu dengan satu kalimat</string>
     <string name="tulis_disini">Tulis disini</string>
     <string name="kirim">Kirim</string>
-    <string name="hasil_mood">Hasil Mood</string>
-    <string name="kata_kata">Kata - Kata</string>
+    <string name="hasil_mood">Mood Results</string>
+    <string name="kata_kata">Words</string>
+    <string name="cari_tempat_sesuai_mood">CARI TEMPAT SESUAI MOOD</string>
+    <string name="cafe_recommendations">Cafe Recommendations</string>
+    <string name="search">Search</string>
 </resources>
