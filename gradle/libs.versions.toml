@@ -1,6 +1,7 @@
 [versions]
 agp = "8.3.0"
 converterGson = "2.9.0"
+datastorePreferencesVersion = "1.0.0"
 dotsindicator = "4.3"
 glide = "4.16.0"
 glideVersion = "4.15.0"
@@ -10,6 +11,8 @@ junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
+lifecycleLivedataKtxVersion = "2.4.0"
+lifecycleViewmodelKtxVersion = "2.4.0"
 loggingInterceptor = "4.10.0"
 material = "1.12.0"
 activity = "1.8.0"
@@ -32,6 +35,9 @@ firebaseAuth = "23.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-datastore-preferences-v100 = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferencesVersion" }
+androidx-lifecycle-livedata-ktx-v240 = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtxVersion" }
+androidx-lifecycle-viewmodel-ktx-v240 = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtxVersion" }
 androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 converter-gson-v290 = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
