@@ -1,4 +1,9 @@
 package app.culturedev.cultureconnect.ui.viewmodel
 
-class MapsViewModel {
+import androidx.lifecycle.ViewModel
+import app.culturedev.cultureconnect.data.repository.CafeRepo
+
+class MapsViewModel (
+    private val repository:CafeRepo
+):ViewModel() {
 }

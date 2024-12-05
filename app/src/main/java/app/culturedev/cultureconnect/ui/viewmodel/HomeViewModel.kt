@@ -1,4 +1,7 @@
 package app.culturedev.cultureconnect.ui.viewmodel
 
-class HomeViewModel {
+import androidx.lifecycle.ViewModel
+import app.culturedev.cultureconnect.data.repository.CafeRepo
+
+class HomeViewModel(private val repository:CafeRepo) :ViewModel() {
 }
