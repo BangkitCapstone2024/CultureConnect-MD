@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1070214320680",
+    "project_id": "cultureconnect-3fd19",
+    "storage_bucket": "cultureconnect-3fd19.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070214320680:android:b2adf965478b6d25f4db1d",
+        "android_client_info": {
+          "package_name": "app.culturedev.cultureconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070214320680-2r58ou1o66k49tqbfkgk3h0av2rogo8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDImDRdQQXUSJ3nm0b6t6ILOKOUsCVxTY0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070214320680-2r58ou1o66k49tqbfkgk3h0av2rogo8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
