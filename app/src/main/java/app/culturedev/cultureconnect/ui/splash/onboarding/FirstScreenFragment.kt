@@ -16,14 +16,13 @@ class FirstScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFirstScreenBinding.inflate(inflater, container, false)
-        initViews()
         return binding.root
     }
 
-    private fun initViews() {
-        binding.btnNext.setOnClickListener {
-            val viewPager = activity?.findViewById<ViewPager2>(R.id.viewPager)
-            viewPager?.currentItem = 1
-        }
-    }
+//    private fun initViews() {
+//        binding.btnNext.setOnClickListener {
+//            val viewPager = activity?.findViewById<ViewPager2>(R.id.viewPager)
+//            viewPager?.currentItem = 1
+//        }
+//    }
 }
