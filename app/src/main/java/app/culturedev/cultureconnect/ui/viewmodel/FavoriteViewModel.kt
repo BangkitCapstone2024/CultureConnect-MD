@@ -1,4 +1,7 @@
 package app.culturedev.cultureconnect.ui.viewmodel
 
-class FavoriteViewModel {
+import androidx.lifecycle.ViewModel
+import app.culturedev.cultureconnect.data.repository.CafeRepo
+
+class FavoriteViewModel(private val repository:CafeRepo) : ViewModel() {
 }
