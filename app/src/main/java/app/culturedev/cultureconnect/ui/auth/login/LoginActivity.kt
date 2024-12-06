@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import app.culturedev.cultureconnect.databinding.ActivityLoginBinding
 import app.culturedev.cultureconnect.helper.ColorUtils
+import app.culturedev.cultureconnect.helper.NetworkUtil
 import app.culturedev.cultureconnect.ui.auth.register.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -28,6 +29,9 @@ class LoginActivity : AppCompatActivity() {
         toRegister()
         ColorUtils.changeStatusBarColor(window, "#CC444B")
 
+        if (!NetworkUtil.isOnline(this)) {
+            NetworkUtil.netToast(this)
+        }
         auth = Firebase.auth
     }
 

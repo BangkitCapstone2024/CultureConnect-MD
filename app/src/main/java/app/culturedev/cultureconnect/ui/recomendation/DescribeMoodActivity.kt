@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import app.culturedev.cultureconnect.R
 import app.culturedev.cultureconnect.databinding.ActivityDescribeMoodBinding
+import app.culturedev.cultureconnect.helper.NetworkUtil
 import app.culturedev.cultureconnect.ui.auth.login.LoginActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -28,6 +29,9 @@ class DescribeMoodActivity : AppCompatActivity() {
         }
         firebaseAuth = Firebase.auth
 
+        if (!NetworkUtil.isOnline(this)) {
+            NetworkUtil.netToast(this)
+        }
         if (firebaseAuth.uid == null) {
             startActivity(Intent(this@DescribeMoodActivity, LoginActivity::class.java))
             finish()
