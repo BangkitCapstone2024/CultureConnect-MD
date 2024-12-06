@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.culturedev.cultureconnect.databinding.FragmentHomeBinding
 import app.culturedev.cultureconnect.helper.ColorUtils
+import app.culturedev.cultureconnect.helper.NetworkUtil
 import app.culturedev.cultureconnect.ui.recomendation.DescribeMoodActivity
 
 class HomeFragment : Fragment() {
@@ -26,7 +27,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.actionBar?.hide()
-
+        if (!NetworkUtil.isOnline(requireContext())) {
+            NetworkUtil.netToast(requireContext())
+        }
         binding.rvRecommendation.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 //            adapter = RecommendationAdapter()
