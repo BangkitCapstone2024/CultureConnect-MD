@@ -7,12 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import app.culturedev.cultureconnect.databinding.FragmentSettingsBinding
 import app.culturedev.cultureconnect.helper.ColorUtils
+import app.culturedev.cultureconnect.helper.NetworkUtil
 
 
 class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (!NetworkUtil.isOnline(requireContext())) {
+            NetworkUtil.netToast(requireContext())
+        }
         ColorUtils.changeStatusBarColor(requireActivity().window, "#193D31")
     }
 
