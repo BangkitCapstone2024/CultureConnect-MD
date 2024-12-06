@@ -14,6 +14,20 @@ import app.culturedev.cultureconnect.ui.adapter.ViewPagerAdapter
 
 
 class ViewPagerFragment : Fragment() {
+    val viewpagerListener = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
+            super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+        }
+
+        override fun onPageScrollStateChanged(state: Int) {
+            super.onPageScrollStateChanged(state)
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,13 +38,11 @@ class ViewPagerFragment : Fragment() {
             requireActivity().finish()
         }
 
-
         val view = inflater.inflate(R.layout.fragment_view_pager, container, false)
 
         val fragmentList = arrayListOf(
             FirstScreenFragment(),
-            SecondScreenFragment(),
-            ThirdScreenFragment()
+            SecondScreenFragment()
         )
 
         val adapter = ViewPagerAdapter(
@@ -38,7 +50,10 @@ class ViewPagerFragment : Fragment() {
             requireActivity().supportFragmentManager,
             lifecycle
         )
-        view.findViewById<ViewPager2>(R.id.viewPager).adapter = adapter
+        view.findViewById<ViewPager2>(R.id.viewPager).apply {
+            this.adapter = adapter
+            registerOnPageChangeCallback(viewpagerListener)
+        }
         return view
     }
 
