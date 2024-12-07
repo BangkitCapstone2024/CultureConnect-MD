@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import app.culturedev.cultureconnect.data.di.Injection
 import app.culturedev.cultureconnect.data.repository.CafeRepo
+import app.culturedev.cultureconnect.ui.viewmodel.DescribeMoodViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.DetailViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.FavoriteViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.HomeViewModel
@@ -40,6 +41,10 @@ class FactoryViewModel(private val repository: CafeRepo) :
 
             modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> {
                 FavoriteViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(DescribeMoodViewModel::class.java) -> {
+                DescribeMoodViewModel(repository) as T
             }
 
             else -> {
