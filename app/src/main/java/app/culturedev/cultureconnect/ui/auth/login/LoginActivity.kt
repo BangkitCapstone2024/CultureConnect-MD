@@ -1,8 +1,11 @@
 package app.culturedev.cultureconnect.ui.auth.login
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -68,6 +71,45 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
+    }
+
+    private fun animation() {
+
+        val title = ObjectAnimator.ofFloat(binding.loginTitle, View.ALPHA, 1f).setDuration(400)
+        val emailLayout =
+            ObjectAnimator.ofFloat(binding.loginEmailLayout, View.ALPHA, 1f).setDuration(400)
+        val emailEdit =
+            ObjectAnimator.ofFloat(binding.edtEmail, View.ALPHA, 1f).setDuration(400)
+        val passwordLayout =
+            ObjectAnimator.ofFloat(binding.loginPasswordLayout, View.ALPHA, 1f).setDuration(400)
+        val passwordEdit =
+            ObjectAnimator.ofFloat(binding.edtPassword, View.ALPHA, 1f).setDuration(400)
+        val login = ObjectAnimator.ofFloat(binding.btnLogin, View.ALPHA, 1f).setDuration(400)
+        val register =
+            ObjectAnimator.ofFloat(binding.tvLinkRegis, View.ALPHA, 1f).setDuration(400)
+
+        val emailAnimations = AnimatorSet().apply {
+            playTogether(
+                emailLayout, emailEdit
+            )
+        }
+
+        val passwordAnimations = AnimatorSet().apply {
+            playTogether(
+                passwordLayout, passwordEdit
+            )
+        }
+
+        AnimatorSet().apply {
+            playSequentially(
+                title,
+                emailAnimations,
+                passwordAnimations,
+                login,
+                register
+            )
+            startDelay = 100
+        }.start()
     }
 
     companion object {

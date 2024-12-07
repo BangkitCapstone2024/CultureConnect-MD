@@ -181,6 +181,110 @@
         <item name="android:layout_marginTop">10dp</item>
     </style>
 
+    <!--    Registration-->
+    <style name="registerMainLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:padding">20dp</item>
+    </style>
+
+    <style name="registerTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Sign up</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="btnBackLogin">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
+        <item name="android:outlineAmbientShadowColor">@android:color/transparent</item>
+        <item name="android:outlineSpotShadowColor">@android:color/transparent</item>
+        <item name="android:src">@drawable/baseline_arrow_back_ios_new_24</item>
+        <item name="android:actionBarSize">20dp</item>
+    </style>
+
+    <style name="textAccountData">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Account Data</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">30dp</item>
+    </style>
+
+    <style name="registerNameLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">25dp</item>
+    </style>
+
+    <style name="edtRegisterName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">Name</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="registerEmailLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">25dp</item>
+    </style>
+
+    <style name="edtRegisterEmail">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">Email</item>
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+
+    <style name="registerPasswordLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="passwordToggleEnabled">true</item>
+    </style>
+
+    <style name="edtRegisterPassword">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">Password</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="passwordToggleEnabled">true</item>
+    </style>
+
+    <style name="registerPasswordConfirmLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="passwordToggleEnabled">true</item>
+    </style>
+
+    <style name="edtRegisPasswordConfirm">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">Confirm Password</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="passwordToggleEnabled">true</item>
+    </style>
+
+    <style name="btnRegister">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Register</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:layout_marginTop">50dp</item>
+    </style>
+
     <!--    Home Fragment-->
     <style name="welcome">
         <item name="android:layout_width">wrap_content</item>
