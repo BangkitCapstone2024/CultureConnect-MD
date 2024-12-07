@@ -1,4 +1,4 @@
-package app.culturedev.cultureconnect.data.response
+package app.culturedev.cultureconnect.data.response.login
 
 import com.google.gson.annotations.SerializedName
 
