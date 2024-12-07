@@ -15,18 +15,14 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "se
 class UserPreferences private constructor(private val dataStore: DataStore<Preferences>) {
     suspend fun saveSession(user: UserModel) {
         dataStore.edit {
-            it[USER_ID] = user.userId
-            it[NAME_KEY] = user.name
-            it[TOKEN_KEY] = user.token
+            it[SESSION_ID] = user.sessionId
         }
     }
 
     fun getSession(): Flow<UserModel> {
         return dataStore.data.map {
             UserModel(
-                it[USER_ID] ?: "",
-                it[NAME_KEY] ?: "",
-                it[TOKEN_KEY] ?: ""
+                it[SESSION_ID] ?: ""
             )
         }
     }
@@ -37,16 +33,14 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         }
     }
 
-    fun getToken(): Flow<String> {
-        return dataStore.data.map {
-            it[TOKEN_KEY] ?: ""
-        }
-    }
+//    fun getSession(): Flow<String> {
+//        return dataStore.data.map {
+//            it[SESSION_ID] ?: ""
+//        }
+//    }
 
     companion object {
-        private val USER_ID = stringPreferencesKey("userId")
-        private val NAME_KEY = stringPreferencesKey("name")
-        private val TOKEN_KEY = stringPreferencesKey("token")
+        private val SESSION_ID = stringPreferencesKey("token")
 
         @Volatile
         private var instance: UserPreferences? = null
