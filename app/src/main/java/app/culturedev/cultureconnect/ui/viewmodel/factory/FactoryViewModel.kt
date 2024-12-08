@@ -12,6 +12,7 @@ import app.culturedev.cultureconnect.ui.viewmodel.HomeViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.LoginViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.MapsViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.RegisterViewModel
+import app.culturedev.cultureconnect.ui.viewmodel.SettingsViewModel
 
 class FactoryViewModel(private val repository: CafeRepo) :
     ViewModelProvider.Factory {
@@ -45,6 +46,10 @@ class FactoryViewModel(private val repository: CafeRepo) :
 
             modelClass.isAssignableFrom(DescribeMoodViewModel::class.java) -> {
                 DescribeMoodViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(SettingsViewModel::class.java) -> {
+                SettingsViewModel(repository) as T
             }
 
             else -> {
