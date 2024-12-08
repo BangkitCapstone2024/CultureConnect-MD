@@ -32,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
         if (!NetworkUtil.isOnline(this)) {
             NetworkUtil.netToast(this)
         }
+        toRegister()
     }
 
     private fun toRegister() {
@@ -64,19 +65,16 @@ class LoginActivity : AppCompatActivity() {
                                     DescribeMoodActivity::class.java
                                 )
                             )
+                            finish()
                         }
 
                         is ResultCafe.Error -> {
                             binding.progressBar.visibility = View.INVISIBLE
+                            Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
             }
         }
     }
-
-    companion object {
-        private const val TAG = "CustomAuthActivity"
-    }
-
 }
