@@ -34,6 +34,7 @@ class DescribeMoodActivity : AppCompatActivity() {
             NetworkUtil.netToast(this)
         }
         moveToResultMood()
+        navigateUp()
     }
 
     private fun moveToResultMood() {
@@ -42,4 +43,11 @@ class DescribeMoodActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    private fun navigateUp() {
+        binding.btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+    }
+
 }
