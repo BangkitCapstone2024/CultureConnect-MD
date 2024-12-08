@@ -29,9 +29,4 @@ class RegisterActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
     }
-
-
-    companion object {
-        private const val TAG = "CustomAuthActivity"
-    }
 }
