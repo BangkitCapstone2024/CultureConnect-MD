@@ -5,10 +5,12 @@ import androidx.lifecycle.liveData
 import app.culturedev.cultureconnect.data.model.UserModel
 import app.culturedev.cultureconnect.data.preferences.UserPreferences
 import app.culturedev.cultureconnect.data.remote.api.ApiService
-import app.culturedev.cultureconnect.data.response.ErrorRes
-import app.culturedev.cultureconnect.data.response.LoginRequest
-import app.culturedev.cultureconnect.data.response.LoginResponse
-import app.culturedev.cultureconnect.data.response.RegisterRes
+import app.culturedev.cultureconnect.data.response.login.LoginRequest
+import app.culturedev.cultureconnect.data.response.login.LoginResponse
+import app.culturedev.cultureconnect.data.response.logout.LogoutRequest
+import app.culturedev.cultureconnect.data.response.logout.LogoutResponse
+import app.culturedev.cultureconnect.data.response.register.RegisterRequest
+import app.culturedev.cultureconnect.data.response.register.RegisterResponse
 import app.culturedev.cultureconnect.data.result.ResultCafe
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
@@ -23,18 +25,40 @@ class CafeRepo(private val apiService: ApiService, private val userPreferences: 
         name: String,
         email: String,
         password: String
-    ): LiveData<ResultCafe<RegisterRes>> = liveData {
+    ): LiveData<ResultCafe<RegisterResponse>> = liveData {
         emit(ResultCafe.Loading)
         try {
-            val response = apiService.register(name = name, email = email, password = password)
+            val request = RegisterRequest(name, email, password)
+            val response = apiService.register(request)
+            userPreferences.saveSession(
+                UserModel(
+                    username = request.username ?: "",
+                    sessionId = response.sessionId ?: ""
+                )
+            )
             emit(ResultCafe.Success(response))
         } catch (e: HttpException) {
             val jsonInString = e.response()?.errorBody()?.string()
-            val errorBody = Gson().fromJson(jsonInString, ErrorRes::class.java)
+            val errorBody = Gson().fromJson(jsonInString, RegisterResponse::class.java)
             val errorMessage = errorBody.message
             emit(ResultCafe.Error(errorMessage.toString()))
         }
     }
+
+    fun handleLogout(session: String): LiveData<ResultCafe<LogoutResponse>> =
+        liveData {
+            emit(ResultCafe.Loading)
+            try {
+                val request = LogoutRequest(session)
+                val response = apiService.logout(request)
+                emit(ResultCafe.Success(response))
+            } catch (e: HttpException) {
+                val jsonInString = e.response()?.errorBody()?.string()
+                val errorBody = Gson().fromJson(jsonInString, LogoutResponse::class.java)
+                val errorMessage = errorBody.message
+                emit(ResultCafe.Error(errorMessage.toString()))
+            }
+        }
 
     fun handleLogin(username: String, password: String): LiveData<ResultCafe<LoginResponse>> =
         liveData {
@@ -44,6 +68,7 @@ class CafeRepo(private val apiService: ApiService, private val userPreferences: 
                 val response = apiService.login(request)
                 userPreferences.saveSession(
                     UserModel(
+                        username = request.username ?: "",
                         sessionId = response.sessionId ?: ""
                     )
                 )
