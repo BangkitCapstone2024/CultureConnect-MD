@@ -55,7 +55,6 @@ class HomeFragment : Fragment() {
             vm.getSession().observe(viewLifecycleOwner) {
                 if (it.sessionId.isEmpty()) {
                     val intent = Intent(requireContext(), LoginActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     startActivity(intent)
                 } else {
                     startActivity(Intent(requireContext(), DescribeMoodActivity::class.java))
