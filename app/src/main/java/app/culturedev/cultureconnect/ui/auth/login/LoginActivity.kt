@@ -14,6 +14,7 @@ import app.culturedev.cultureconnect.ui.auth.register.RegisterActivity
 import app.culturedev.cultureconnect.ui.recomendation.DescribeMoodActivity
 import app.culturedev.cultureconnect.ui.viewmodel.LoginViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.factory.FactoryViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -70,7 +71,26 @@ class LoginActivity : AppCompatActivity() {
 
                         is ResultCafe.Error -> {
                             binding.progressBar.visibility = View.INVISIBLE
-                            Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Error :${result.error}", Toast.LENGTH_SHORT)
+                                .show()
+                            MaterialAlertDialogBuilder(this).apply {
+                                setTitle("Alert")
+                                setMessage("Do you have have an account previously ? ")
+                                    .setPositiveButton("Yes ,I have") { _, _ ->
+
+                                    }
+                                    .setNegativeButton("No,Create a account") { _, _ ->
+                                        startActivity(
+                                            Intent(
+                                                this@LoginActivity,
+                                                RegisterActivity::class.java
+                                            )
+                                        )
+                                        finish()
+                                    }
+                                create()
+                                show()
+                            }
                         }
                     }
                 }
