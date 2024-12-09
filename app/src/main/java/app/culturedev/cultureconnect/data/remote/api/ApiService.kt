@@ -1,33 +1,27 @@
 package app.culturedev.cultureconnect.data.remote.api
 
-import app.culturedev.cultureconnect.data.response.DataRes
-import app.culturedev.cultureconnect.data.response.LoginRes
-import app.culturedev.cultureconnect.data.response.RegisterRes
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.Header
+import app.culturedev.cultureconnect.data.response.login.LoginRequest
+import app.culturedev.cultureconnect.data.response.login.LoginResponse
+import app.culturedev.cultureconnect.data.response.logout.LogoutRequest
+import app.culturedev.cultureconnect.data.response.logout.LogoutResponse
+import app.culturedev.cultureconnect.data.response.register.RegisterRequest
+import app.culturedev.cultureconnect.data.response.register.RegisterResponse
+import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface ApiService {
-    @FormUrlEncoded
-    @POST("register")
-    suspend fun register(
-        @Field("name") name: String,
-        @Field("email") email: String,
-        @Field("password") password: String
-    ): RegisterRes
-
-    @FormUrlEncoded
-    @POST("login")
+    @POST("auth/login")
     suspend fun login(
-        @Field("email") email: String,
-        @Field("password") password: String
-    ): LoginRes
+        @Body body: LoginRequest
+    ): LoginResponse
 
-    @GET("data")
-    suspend fun getStories(
-        @Header("Authorization")
-        token: String
-    ): DataRes
+    @POST("auth/logout")
+    suspend fun logout(
+        @Body body: LogoutRequest
+    ): LogoutResponse
+
+    @POST("auth/register")
+    suspend fun register(
+        @Body body: RegisterRequest
+    ): RegisterResponse
 }
