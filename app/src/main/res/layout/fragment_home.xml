@@ -53,19 +53,15 @@
         android:paddingHorizontal="20dp"
         app:layout_constraintTop_toBottomOf="@id/homeUsernameLayout">
 
-        <androidx.appcompat.widget.SearchView
+        <SearchView
             android:id="@+id/searchView"
-            android:textColor="@color/black"
-            app:boxStrokeColor="@color/black"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:iconifiedByDefault="false"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnFilter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:iconifiedByDefault="false"
-            app:searchHintIcon="@null"
-            app:queryHint="Search"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnFilter"

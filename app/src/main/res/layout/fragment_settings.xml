@@ -14,10 +14,9 @@
         android:layout_height="120dp"
         android:contentDescription="@string/profile"
         android:src="@drawable/baseline_account_circle_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -27,11 +26,11 @@
         android:fontFamily="@font/poppins"
         android:text="@string/profile"
         android:textColor="@color/black"
-        android:textSize="19sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:textSize="20sp"
+        style=""
+        app:layout_constraintTop_toBottomOf="@+id/ivProfileImage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivProfileImage" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -44,12 +43,9 @@
             android:id="@+id/view"
             android:layout_width="91dp"
             android:layout_height="33dp"
-            android:layout_marginTop="52dp"
             android:background="#F5F5F7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivProfileImage">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
         </View>
 
         <View
@@ -58,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
             android:background="#E8ECEB"
-            app:layout_constraintTop_toBottomOf="@+id/ivProfileImage"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
         </View>

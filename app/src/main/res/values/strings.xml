@@ -31,7 +31,7 @@
     <string name="nama_lengkap_anda">Nama Lengkap anda</string>
     <string name="email_anda">Email Anda</string>
     <string name="logout">Logout</string>
-<!--    <string name="back"><![CDATA[<]]></string>-->
+    <!--    <string name="back"><![CDATA[<]]></string>-->
     <string name="data_akun">Data Akun</string>
     <string name="Nama">Nama</string>
     <string name="belum_punya_akun_daftar">Belum punya akun ? daftar</string>

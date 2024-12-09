@@ -5,11 +5,12 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="colorPrimary">#EBF2FA</color>
-    <color name="colorSecondary">#193D31</color>
+    <color name="buttonPrimary">#193D31</color>
     <color name="colorAccent">#000000</color>
-    <color name="colorTertiary">#B3193D31</color>
+    <color name="buttonSecondary">#B3193D31</color>
     <color name="colorQuaternary">#667E7C</color>
     <color name="colorAccent2">#C99614</color>
+    <color name="cardView">#E8ECEB</color>
 
     <color name="forgetPassword">#202DA5</color>
 </resources>

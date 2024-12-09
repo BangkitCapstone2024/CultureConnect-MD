@@ -54,12 +54,15 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.activity)
-    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation (libs.translate)
+
+    //    Firebase
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.messaging)
 
     //VIEWPAGER
     implementation(libs.androidx.viewpager2)
@@ -80,7 +83,9 @@ dependencies {
     //RETROFIT GSON
     implementation(libs.converter.gson)
 
-//    Data Store
+    //    Data Store
     implementation(libs.androidx.datastore.preferences)
 
+    //    Room
+    implementation(libs.androidx.room.runtime)
 }
