@@ -56,10 +56,9 @@ class HomeFragment : Fragment() {
                 if (it.sessionId.isEmpty()) {
                     val intent = Intent(requireContext(), LoginActivity::class.java)
                     startActivity(intent)
-                } else {
-                    startActivity(Intent(requireContext(), DescribeMoodActivity::class.java))
                 }
             }
+            startActivity(Intent(requireContext(), DescribeMoodActivity::class.java))
         }
     }
 

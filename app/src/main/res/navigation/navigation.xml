@@ -29,5 +29,8 @@
         android:name="app.culturedev.cultureconnect.ui.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_profile_to_home"
+            app:destination="@id/home" />
     </fragment>
 </navigation>
