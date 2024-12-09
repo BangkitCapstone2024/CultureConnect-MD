@@ -4,37 +4,40 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.util.Log
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import app.culturedev.cultureconnect.data.result.ResultCafe
 import app.culturedev.cultureconnect.databinding.ActivityLoginBinding
 import app.culturedev.cultureconnect.helper.ColorUtils
 import app.culturedev.cultureconnect.helper.NetworkUtil
 import app.culturedev.cultureconnect.ui.auth.register.RegisterActivity
-import com.google.firebase.auth.FirebaseAuth
+import app.culturedev.cultureconnect.ui.recomendation.DescribeMoodActivity
+import app.culturedev.cultureconnect.ui.viewmodel.LoginViewModel
+import app.culturedev.cultureconnect.ui.viewmodel.factory.FactoryViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var auth: FirebaseAuth
-    private var customToken: String? = null
+    private val loginViewModel by viewModels<LoginViewModel> {
+        FactoryViewModel.getInstance(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        toRegister()
         ColorUtils.changeStatusBarColor(window, "#CC444B")
-
+        binding.progressBar.visibility = View.INVISIBLE
+        login()
         if (!NetworkUtil.isOnline(this)) {
             NetworkUtil.netToast(this)
         }
-        auth = Firebase.auth
+        toRegister()
     }
 
     private fun toRegister() {
@@ -43,32 +46,81 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    public override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
-    }
+    private fun login() {
+        binding.btnLogin.setOnClickListener {
+            val username = binding.edtUsername.text.toString()
+            val password = binding.edtPassword.text.toString()
 
-    private fun startSignIn() {
-        customToken?.let {
-            auth.signInWithCustomToken(it)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        Log.d(TAG, "signInWithCustomToken:success")
-                        val user = auth.currentUser
-                        updateUI(user)
-                    } else {
-                        Log.w(TAG, "signInWithCustomToken:failure", task.exception)
-                        Toast.makeText(
-                            baseContext,
-                            "Authentication failed.",
-                            Toast.LENGTH_SHORT,
-                        ).show()
-                        updateUI(null)
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Silahkan isi dengan benar !!", Toast.LENGTH_SHORT).show()
+            } else {
+
+                loginViewModel.handleLogin(username, password).observe(this) { result ->
+                    when (result) {
+                        is ResultCafe.Loading -> {
+                            binding.progressBar.visibility = View.VISIBLE
+                        }
+
+                        is ResultCafe.Success -> {
+                            binding.progressBar.visibility = View.INVISIBLE
+                            Toast.makeText(this, "Sukses Login", Toast.LENGTH_LONG).show()
+                            startActivity(
+                                Intent(
+                                    this@LoginActivity,
+                                    DescribeMoodActivity::class.java
+                                )
+                            )
+                            finish()
+                        }
+
+                        is ResultCafe.Error -> {
+                            binding.progressBar.visibility = View.INVISIBLE
+                            Toast.makeText(this, "Error :${result.error}", Toast.LENGTH_SHORT)
+                                .show()
+                            MaterialAlertDialogBuilder(this).apply {
+                                setTitle("Alert")
+                                setMessage("Do you have have an account previously ? ")
+                                    .setPositiveButton("Yes ,I have") { _, _ ->
+
+                                    }
+                                    .setNegativeButton("No,Create a account") { _, _ ->
+                                        startActivity(
+                                            Intent(
+                                                this@LoginActivity,
+                                                RegisterActivity::class.java
+                                            )
+                                        )
+                                        finish()
+                                    }
+                                create()
+                                show()
+                            }
+                        }
                     }
                 }
+            }
         }
     }
+//    private fun startSignIn() {
+//        customToken?.let {
+//            auth.signInWithCustomToken(it)
+//                .addOnCompleteListener(this) { task ->
+//                    if (task.isSuccessful) {
+//                        Log.d(TAG, "signInWithCustomToken:success")
+//                        val user = auth.currentUser
+//                        updateUI(user)
+//                    } else {
+//                        Log.w(TAG, "signInWithCustomToken:failure", task.exception)
+//                        Toast.makeText(
+//                            baseContext,
+//                            "Authentication failed.",
+//                            Toast.LENGTH_SHORT,
+//                        ).show()
+//                        updateUI(null)
+//                    }
+//                }
+//        }
+//    }
 
     private fun updateUI(user: FirebaseUser?) {
     }

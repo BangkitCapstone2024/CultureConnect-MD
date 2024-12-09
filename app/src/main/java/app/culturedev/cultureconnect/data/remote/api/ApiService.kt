@@ -1,5 +1,12 @@
 package app.culturedev.cultureconnect.data.remote.api
 
+import app.culturedev.cultureconnect.data.response.login.LoginRequest
+import app.culturedev.cultureconnect.data.response.login.LoginResponse
+import app.culturedev.cultureconnect.data.response.logout.LogoutRequest
+import app.culturedev.cultureconnect.data.response.logout.LogoutResponse
+import app.culturedev.cultureconnect.data.response.register.RegisterRequest
+import app.culturedev.cultureconnect.data.response.register.RegisterResponse
+import retrofit2.http.Body
 import androidx.room.Insert
 import app.culturedev.cultureconnect.data.response.DataRes
 import app.culturedev.cultureconnect.data.response.LoginRes
@@ -12,21 +19,21 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiService {
-    @FormUrlEncoded
-    @POST("register")
-    suspend fun register(
-        @Field("name") name: String,
-        @Field("email") email: String,
-        @Field("password") password: String
-    ): RegisterRes
-
-    @FormUrlEncoded
-    @POST("login")
+    @POST("auth/login")
     suspend fun login(
-        @Field("email") email: String,
-        @Field("password") password: String
+        @Body body: LoginRequest
     ): LoginRes
 
+    @POST("auth/logout")
+    suspend fun logout(
+        @Body body: LogoutRequest
+    ): LogoutResponse
+
+    @POST("auth/register")
+    suspend fun register(
+        @Body body: RegisterRequest
+    ): RegisterRes
+    
     @GET("data")
     suspend fun getStories(
         @Header("Authorization")

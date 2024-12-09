@@ -2,24 +2,27 @@ package app.culturedev.cultureconnect.ui.auth.register
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import app.culturedev.cultureconnect.data.result.ResultCafe
 import app.culturedev.cultureconnect.databinding.ActivityRegisterBinding
 import app.culturedev.cultureconnect.helper.ColorUtils
 import app.culturedev.cultureconnect.helper.NetworkUtil
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.auth
+import app.culturedev.cultureconnect.ui.recomendation.DescribeMoodActivity
+import app.culturedev.cultureconnect.ui.viewmodel.RegisterViewModel
+import app.culturedev.cultureconnect.ui.viewmodel.factory.FactoryViewModel
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
-    private lateinit var auth: FirebaseAuth
-    private var customToken: String? = null
+    private val vm by viewModels<RegisterViewModel> {
+        FactoryViewModel.getInstance(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +35,49 @@ class RegisterActivity : AppCompatActivity() {
         if (!NetworkUtil.isOnline(this)) {
             NetworkUtil.netToast(this)
         }
+        handleRegistration()
+        binding.progressBarRegister.visibility = View.INVISIBLE
+    }
 
-        auth = Firebase.auth
+    private fun handleRegistration() {
+        binding.btnRegister.setOnClickListener {
+            val username = binding.edtRegisterName.text.toString()
+            val email = binding.edtRegisterEmail.text.toString()
+            val password = binding.edtRegisterPassword.text.toString()
+            val confPassword = binding.edtRegisterPassword.text.toString()
+
+            if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confPassword.isEmpty() || confPassword != password) {
+                Toast.makeText(this, "Silahkan isi data anda !!", Toast.LENGTH_SHORT).show()
+            }
+            vm.handleRegistration(username, email, password).observe(this) { result ->
+                when (result) {
+                    is ResultCafe.Loading -> {
+                        binding.progressBarRegister.visibility = View.VISIBLE
+                    }
+
+                    is ResultCafe.Success -> {
+                        binding.progressBarRegister.visibility = View.INVISIBLE
+                        Toast.makeText(
+                            this,
+                            "Selamat Datang di Culture Connect ",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        startActivity(
+                            Intent(
+                                this@RegisterActivity,
+                                DescribeMoodActivity::class.java
+                            )
+                        )
+                        finish()
+                    }
+
+                    is ResultCafe.Error -> {
+                        binding.progressBarRegister.visibility = View.INVISIBLE
+                        Toast.makeText(this, "Error : ${result.error}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
     }
 
     private fun navigateUp() {
@@ -42,26 +86,26 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun startSignIn() {
-        customToken?.let {
-            auth.signInWithCustomToken(it)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        Log.d(TAG, "signInWithCustomToken:success")
-                        val user = auth.currentUser
-                        updateUI(user)
-                    } else {
-                        Log.w(TAG, "signInWithCustomToken:failure", task.exception)
-                        Toast.makeText(
-                            baseContext,
-                            "Authentication failed.",
-                            Toast.LENGTH_SHORT,
-                        ).show()
-                        updateUI(null)
-                    }
-                }
-        }
-    }
+//    private fun startSignIn() {
+//        customToken?.let {
+//            auth.signInWithCustomToken(it)
+//                .addOnCompleteListener(this) { task ->
+//                    if (task.isSuccessful) {
+//                        Log.d(TAG, "signInWithCustomToken:success")
+//                        val user = auth.currentUser
+//                        updateUI(user)
+//                    } else {
+//                        Log.w(TAG, "signInWithCustomToken:failure", task.exception)
+//                        Toast.makeText(
+//                            baseContext,
+//                            "Authentication failed.",
+//                            Toast.LENGTH_SHORT,
+//                        ).show()
+//                        updateUI(null)
+//                    }
+//                }
+//        }
+//    }
 
     private fun updateUI(user: FirebaseUser?) {
     }
