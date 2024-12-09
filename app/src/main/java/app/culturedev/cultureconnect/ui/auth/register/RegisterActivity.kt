@@ -17,6 +17,7 @@ import app.culturedev.cultureconnect.helper.NetworkUtil
 import app.culturedev.cultureconnect.ui.recomendation.DescribeMoodActivity
 import app.culturedev.cultureconnect.ui.viewmodel.RegisterViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.factory.FactoryViewModel
+import com.google.firebase.auth.FirebaseUser
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -49,7 +50,7 @@ class RegisterActivity : AppCompatActivity() {
             if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confPassword.isEmpty() || confPassword != password) {
                 Toast.makeText(this, "Silahkan isi data anda !!", Toast.LENGTH_SHORT).show()
             }
-            vm.handleRegistration(username, email, password).observe(this) { result ->
+            vm.handleRegister(username, email, password).observe(this) { result ->
                 when (result) {
                     is ResultCafe.Loading -> {
                         binding.progressBarRegister.visibility = View.VISIBLE

@@ -131,7 +131,7 @@ class LoginActivity : AppCompatActivity() {
         val emailLayout =
             ObjectAnimator.ofFloat(binding.loginEmailLayout, View.ALPHA, 1f).setDuration(400)
         val emailEdit =
-            ObjectAnimator.ofFloat(binding.edtEmail, View.ALPHA, 1f).setDuration(400)
+            ObjectAnimator.ofFloat(binding.edtUsername, View.ALPHA, 1f).setDuration(400)
         val passwordLayout =
             ObjectAnimator.ofFloat(binding.loginPasswordLayout, View.ALPHA, 1f).setDuration(400)
         val passwordEdit =

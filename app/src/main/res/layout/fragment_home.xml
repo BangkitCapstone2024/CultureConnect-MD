@@ -70,6 +70,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_filter_alt_24"
             android:backgroundTint="@android:color/transparent"
+            android:outlineSpotShadowColor="@android:color/transparent"
+            android:outlineAmbientShadowColor="@android:color/transparent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
