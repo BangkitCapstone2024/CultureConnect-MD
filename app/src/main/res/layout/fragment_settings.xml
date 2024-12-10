@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,7 +17,8 @@
         android:src="@drawable/baseline_account_circle_24"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -26,124 +28,81 @@
         android:fontFamily="@font/poppins"
         android:text="@string/profile"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        style=""
-        app:layout_constraintTop_toBottomOf="@+id/ivProfileImage"
+        android:textSize="19sp"
+        app:layout_constraintTop_toBottomOf="@id/ivProfileImage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout6"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:endIconDrawable="@drawable/baseline_account_circle_24"
+        app:endIconMode="custom"
+        app:hintTextColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/tvUsername"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="91dp"
-            android:layout_height="33dp"
-            android:background="#F5F5F7"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-        </View>
-
-        <View
-            android:id="@+id/view2"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:background="#E8ECEB"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-        </View>
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="77dp"
-            android:layout_height="17dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/poppins"
-            android:text="@string/data_diri"
+            android:hint="@string/nama_lengkap_anda"
+            android:inputType="textPersonName"
             android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="@+id/view"
-            app:layout_constraintStart_toStartOf="@+id/view"
-            app:layout_constraintEnd_toEndOf="@+id/view"
-            app:layout_constraintHorizontal_bias="0.515"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout6"
-            android:layout_width="357dp"
-            android:layout_height="68dp"
-            android:layout_marginTop="60dp"
-            app:endIconDrawable="@drawable/baseline_account_circle_24"
-            app:endIconMode="custom"
-            android:textColorHint="@color/black"
             app:boxStrokeColor="@color/black"
-            app:hintTextColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/view2">
+            app:textInputLayoutFocusedRectEnabled="true" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtUsername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:textInputLayoutFocusedRectEnabled="true"
-                android:inputType="textPersonName"
-                android:textColor="@color/black"
-                app:boxStrokeColor="@color/black"
-                android:hint="@string/nama_lengkap_anda" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-        </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:endIconDrawable="@drawable/mail_24px"
+        app:endIconMode="custom"
+        app:hintTextColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout7"
-            android:layout_width="354dp"
-            android:layout_height="61dp"
-            android:layout_marginTop="48dp"
-            android:textColorHint="@color/black"
+        <app.culturedev.cultureconnect.ui.customview.EmailCustomView
+            android:id="@+id/edtEmailUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:hint="@string/email_anda"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
             app:boxStrokeColor="@color/black"
-            app:endIconDrawable="@drawable/mail_24px"
-            app:endIconMode="custom"
-            app:hintTextColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/view2"
-            app:layout_constraintHorizontal_bias="0.562"
-            app:layout_constraintStart_toStartOf="@+id/view2"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout6">
+            app:textInputLayoutFocusedRectEnabled="true" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <app.culturedev.cultureconnect.ui.customview.EmailCustomView
-                android:id="@+id/edtEmailUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/email_anda"
-                android:focusable="false"
-                android:clickable="false"
-                android:cursorVisible="false"
-                app:textInputLayoutFocusedRectEnabled="true"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/black"
-                app:boxStrokeColor="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogout"
-            android:layout_width="350dp"
-            android:layout_height="60dp"
-            android:backgroundTint="#B0830F"
-            android:textColor="@color/white"
-            android:fontFamily="@font/poppins"
-            android:textSize="20sp"
-            app:cornerRadius="10sp"
-            android:layout_marginTop="60dp"
-            android:text="@string/logout"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout7"
-            app:layout_constraintStart_toStartOf="@+id/view2"
-            app:layout_constraintEnd_toEndOf="@+id/view2" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#B0830F"
+        android:fontFamily="@font/poppins"
+        android:text="@string/logout"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
