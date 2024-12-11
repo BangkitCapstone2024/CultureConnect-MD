@@ -14,9 +14,9 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class MapsFragment : Fragment() {
     private val callback = OnMapReadyCallback { googleMap ->
-        val sydney = LatLng(-34.0, 151.0)
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val solo = LatLng(-7.5703141, 110.8201383)
+        googleMap.addMarker(MarkerOptions().position(solo).title("Marker in Sydney"))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(solo))
     }
 
     override fun onCreateView(
