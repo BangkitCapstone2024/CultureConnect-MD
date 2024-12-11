@@ -29,6 +29,15 @@ class SettingsFragment : Fragment() {
         }
         ColorUtils.changeStatusBarColor(requireActivity().window, "#193D31")
         logout()
+
+        fetchUserData()
+    }
+
+    private fun fetchUserData() {
+        vm.getSession().observe(viewLifecycleOwner) { user ->
+            binding.edtUsername.setText(user.username)
+            binding.tvUsername.text = user.username
+        }
     }
 
     override fun onCreateView(
