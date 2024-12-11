@@ -11,6 +11,7 @@
     <color name="colorQuaternary">#667E7C</color>
     <color name="colorAccent2">#C99614</color>
     <color name="cardView">#E8ECEB</color>
+    <color name="backgroundPage">#F5F5F7</color>
 
     <color name="forgetPassword">#202DA5</color>
 </resources>

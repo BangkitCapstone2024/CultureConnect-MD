@@ -38,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
             NetworkUtil.netToast(this)
         }
         toRegister()
+        animation()
     }
 
     private fun toRegister() {
@@ -100,29 +101,6 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-//    private fun startSignIn() {
-//        customToken?.let {
-//            auth.signInWithCustomToken(it)
-//                .addOnCompleteListener(this) { task ->
-//                    if (task.isSuccessful) {
-//                        Log.d(TAG, "signInWithCustomToken:success")
-//                        val user = auth.currentUser
-//                        updateUI(user)
-//                    } else {
-//                        Log.w(TAG, "signInWithCustomToken:failure", task.exception)
-//                        Toast.makeText(
-//                            baseContext,
-//                            "Authentication failed.",
-//                            Toast.LENGTH_SHORT,
-//                        ).show()
-//                        updateUI(null)
-//                    }
-//                }
-//        }
-//    }
-
-    private fun updateUI(user: FirebaseUser?) {
     }
 
     private fun animation() {

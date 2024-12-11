@@ -7,7 +7,7 @@
     <style name="cardViewLayout">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="cornerRadius">8dp</item>
+        <item name="cardCornerRadius">8dp</item>
         <item name="elevation">4dp</item>
         <item name="android:backgroundTint">@color/cardView</item>
     </style>
@@ -27,6 +27,16 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:src">@drawable/baseline_bookmark_24</item>
         <item name="android:backgroundTint">@color/white</item>
+        <item name="fabCustomSize">35dp</item>
+    </style>
+
+    <style name="fabNotification">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:src">@drawable/baseline_notifications_active_24</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
+        <item name="android:outlineSpotShadowColor">@android:color/transparent</item>
+        <item name="android:outlineAmbientShadowColor">@android:color/transparent</item>
         <item name="fabCustomSize">35dp</item>
     </style>
 
@@ -306,18 +316,20 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">Have a Great Day !</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/gray</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">10dp</item>
     </style>
 
     <style name="username">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">Denis</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">10dp</item>
     </style>
 
     <style name="recommendationTitle">
@@ -406,19 +418,70 @@
     <style name="detailTitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">Solo</item>
+        <item name="android:text">Pixel Coffee &amp; Kitchen</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!--    <style name="detailDescription">-->
-    <!--        <item name="android:layout_width">match_parent</item>-->
-    <!--        <item name="android:layout_height">wrap_content</item>-->
-    <!--        <item name="android:text">Tes</item>-->
-    <!--        <item name="android:textSize">20sp</item>-->
-    <!--        <item name="android:textColor">@color/black</item>-->
-    <!--    </style>-->
+    <style name="detailRating">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawableStart">@drawable/baseline_star_24</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:text">4,6 (1.037)</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="detailCategory">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Kedai Kopi</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    
+    <style name="detailAddress">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Jl. Satrio Wibowo No.35, Purwosari, Kec. Laweyan, Kota Surakarta, Jawa Tengah 57142</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="detailImageContact">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:src">@drawable/telephone_icon</item>
+    </style>
+    
+    <style name="detailContact">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">0271721505</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginStart">10dp</item>
+    </style>
+
+    <style name="detailImagePrice">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:src">@drawable/wallet_icon</item>
+    </style>
+
+    <style name="detailPrice">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Rp 25–50 rb</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginStart">10dp</item>
+    </style>
 
     <!--    Favorite Fragment-->
     <style name="bookmarkTitle">
@@ -481,6 +544,26 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:paddingHorizontal">10dp</item>
+    </style>
+
+    <!--    History-->
+    <style name="historyTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">History</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--    All Cafe-->
+    <style name="allCafeTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">All Cafe</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

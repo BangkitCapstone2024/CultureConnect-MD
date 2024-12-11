@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import app.culturedev.cultureconnect.data.response.ListDataItem
+import app.culturedev.cultureconnect.data.database.DataEntity
 import app.culturedev.cultureconnect.databinding.ListItemBinding
 import app.culturedev.cultureconnect.helper.Utils
 import app.culturedev.cultureconnect.ui.detail.DetailActivity
 import com.bumptech.glide.Glide
 
-class Adapter: ListAdapter<ListDataItem, Adapter.ViewHolder>(DIFF_CALLBACK){
+class FavoriteAdapter(private val onFavoriteClick: (DataEntity) -> Unit): ListAdapter<DataEntity, FavoriteAdapter.ViewHolder>(
+    DIFF_CALLBACK
+) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -30,7 +32,7 @@ class Adapter: ListAdapter<ListDataItem, Adapter.ViewHolder>(DIFF_CALLBACK){
     inner class ViewHolder(private val binding: ListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: ListDataItem) {
+        fun bind(data: DataEntity) {
             Glide.with(binding.root)
                 .load(data.image)
                 .into(binding.ivItemImage)
@@ -48,7 +50,7 @@ class Adapter: ListAdapter<ListDataItem, Adapter.ViewHolder>(DIFF_CALLBACK){
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setSearchList(listCafe: List<ListDataItem>){
+    fun setSearchList(listCafe: List<DataEntity>){
         submitList(listCafe)
         notifyDataSetChanged()
     }
@@ -56,12 +58,12 @@ class Adapter: ListAdapter<ListDataItem, Adapter.ViewHolder>(DIFF_CALLBACK){
     override fun getItemCount(): Int = currentList.size
 
     companion object{
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListDataItem>() {
-            override fun areItemsTheSame(oldItem: ListDataItem, newItem: ListDataItem): Boolean {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DataEntity>() {
+            override fun areItemsTheSame(oldItem: DataEntity, newItem: DataEntity): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: ListDataItem, newItem: ListDataItem): Boolean {
+            override fun areContentsTheSame(oldItem: DataEntity, newItem: DataEntity): Boolean {
                 return oldItem == newItem
             }
         }

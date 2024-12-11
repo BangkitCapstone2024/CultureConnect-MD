@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     alias(libs.plugins.googleGmsGoogleServices)
+    id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -87,7 +89,15 @@ dependencies {
 
     //    Data Store
     implementation(libs.androidx.datastore.preferences)
+    implementation (libs.androidx.datastore)
 
     //    Room
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.room.compiler)
+
+    //    Coroutines
+    implementation(libs.coroutines)
+    implementation(libs.kotlinx.coroutines.core)
+
 }

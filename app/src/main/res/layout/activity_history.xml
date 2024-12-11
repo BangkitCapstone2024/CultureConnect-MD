@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:padding="10dp"
-    tools:context=".ui.recomendation.CafeResultActivity">
+    android:background="@color/backgroundPage"
+    tools:context=".ui.history.HistoryActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cafeResultLayout"
+        android:id="@+id/historyHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,13 +24,8 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
-            android:id="@+id/cafeRecommendationTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cafe_recommendations"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:id="@+id/titleHistory"
+            style="@style/historyTitle"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnBack"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -45,18 +40,17 @@
         app:iconifiedByDefault="false"
         app:queryHint="Search Caffe"
         app:queryBackground="@android:color/transparent"
-        app:layout_constraintTop_toBottomOf="@id/cafeResultLayout"
+        app:layout_constraintTop_toBottomOf="@id/historyHeader"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCafeRecomm"
+        android:id="@+id/rvHistory"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/searchView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/recommendation_item"/>
+        tools:listitem="@layout/list_item"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
