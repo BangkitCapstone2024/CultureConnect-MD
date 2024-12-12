@@ -22,8 +22,8 @@
 
             <ImageView
                 android:id="@+id/iv_item_image"
-                android:layout_width="126dp"
-                android:layout_height="177dp"
+                android:layout_width="123dp"
+                android:layout_height="167dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ex_image_list_cafe"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -81,17 +81,26 @@
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_item_direction"
                     style="@style/btn_direction"
+                    android:layout_width="107dp"
+                    android:layout_height="40dp"
                     app:cornerRadius="8dp"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btn_item_detail"
+                    app:layout_constraintHorizontal_bias="0.078"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btn_item_detail"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_item_detail"
                     style="@style/btn_detail"
+                    android:layout_width="85dp"
+                    android:layout_height="39dp"
+                    android:layout_marginEnd="4dp"
                     app:cornerRadius="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintVertical_bias="1.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
