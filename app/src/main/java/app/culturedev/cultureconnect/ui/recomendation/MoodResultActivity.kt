@@ -7,11 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import app.culturedev.cultureconnect.R
+import app.culturedev.cultureconnect.data.response.recommendation.CafeRecommendation
 import app.culturedev.cultureconnect.databinding.ActivityMoodResultBinding
 import app.culturedev.cultureconnect.helper.NetworkUtil
+import app.culturedev.cultureconnect.helper.Utils
 
 class MoodResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMoodResultBinding
+    private lateinit var listed:CafeRecommendation
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,11 +29,24 @@ class MoodResultActivity : AppCompatActivity() {
             NetworkUtil.netToast(this)
         }
         getCafeRecommendations()
+
+        listed = intent.getParcelableExtra(Utils.LIST_PLACE)!!
+        fetchUserMood()
     }
 
     private fun getCafeRecommendations() {
+
         binding.btnGetRecCafe.setOnClickListener {
-            startActivity(Intent(this@MoodResultActivity, CafeResultActivity::class.java))
+            val intent = Intent(this@MoodResultActivity, CafeResultActivity::class.java)
+            intent.putExtra(Utils.RECOMEN_PLACE, listed)
+            startActivity(intent)
         }
+    }
+
+    private fun fetchUserMood() {
+        val predictedMood = intent.getStringExtra(Utils.PREDICT_MOOD)
+        val quoteMood = intent.getStringExtra(Utils.MOOD_QUOTE)
+        binding.tvQuoteMood.text = predictedMood
+        binding.tvDescriptionQuote.text = quoteMood
     }
 }

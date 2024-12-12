@@ -5,11 +5,17 @@ import app.culturedev.cultureconnect.data.preferences.UserPreferences
 import app.culturedev.cultureconnect.data.preferences.dataStore
 import app.culturedev.cultureconnect.data.remote.api.ApiConfig
 import app.culturedev.cultureconnect.data.repository.CafeRepo
+import app.culturedev.cultureconnect.data.repository.RecommendationRepository
 
 object Injection {
     fun provideRepository(context: Context): CafeRepo {
         val pref = UserPreferences.getInstance(context.dataStore)
         val apiService = ApiConfig.getApiService()
         return CafeRepo.getInstance(apiService, pref)
+    }
+
+    fun provideRecommendationRepository(context: Context): RecommendationRepository {
+        val recommendationApiService = ApiConfig.getRecommendationService()
+        return RecommendationRepository.getInstance(recommendationApiService)
     }
 }
