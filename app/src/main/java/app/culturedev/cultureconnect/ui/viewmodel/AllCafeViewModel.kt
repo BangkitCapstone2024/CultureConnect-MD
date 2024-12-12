@@ -12,24 +12,31 @@ import app.culturedev.cultureconnect.data.remote.api.ApiConfig
 import app.culturedev.cultureconnect.data.repository.CafeRepo
 import app.culturedev.cultureconnect.data.response.DataRes
 import app.culturedev.cultureconnect.data.response.ListDataItem
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AllCafeViewModel (application: Application, private val repository: CafeRepo) : AndroidViewModel(application) {
+class AllCafeViewModel(application: Application, private val repository: CafeRepo) : AndroidViewModel(application) {
+
     companion object {
         private const val TAG = "AllCafeViewModel"
     }
-    
+
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
-    
+
     private val _listAllCafe = MutableLiveData<List<ListDataItem>?>()
     val listAllCafe: LiveData<List<ListDataItem>?> = _listAllCafe
 
     private var allCafesFromApi: List<ListDataItem>? = null
+
+    // Filter parameters
+    private var selectedCategories: List<String> = emptyList()
+    private var selectedPriceRange: String? = null
+    private var selectedRatingThreshold: Double = 0.0
 
     init {
         fetchAllCafe()
@@ -45,15 +52,19 @@ class AllCafeViewModel (application: Application, private val repository: CafeRe
                     override fun onResponse(call: Call<DataRes>, response: Response<DataRes>) {
                         _isLoading.value = false
                         if (response.isSuccessful) {
-                            val event = response.body()?.listData
-                            _listAllCafe.value = event?.take(10)
+                            allCafesFromApi = response.body()?.listData
+                            _listAllCafe.value = allCafesFromApi
                         } else {
-                            Toast.makeText(getApplication(), "Failed to Fetch API", Toast.LENGTH_SHORT).show()
+                            launch(Dispatchers.Main) {
+                                Toast.makeText(getApplication(), "Failed to Fetch API", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
 
                     override fun onFailure(call: Call<DataRes>, t: Throwable) {
-                        Toast.makeText(getApplication(), "Failed to load events: ${t.message}", Toast.LENGTH_SHORT).show()
+                        launch(Dispatchers.Main) {
+                            Toast.makeText(getApplication(), "Failed to load events: ${t.message}", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 })
             } finally {
@@ -62,14 +73,59 @@ class AllCafeViewModel (application: Application, private val repository: CafeRe
         }
     }
 
-    fun getSession(): LiveData<UserModel> {
-        return repository.getSession().asLiveData()
-    }
-
+    /**
+     * Filters the cafes based on search query and current filter parameters.
+     */
     fun filterCafes(query: String) {
-        val filteredList = allCafesFromApi?.filter {
-            it.name?.contains(query, ignoreCase = true) ?: false
+        val filteredList = allCafesFromApi?.filter { cafe ->
+            val matchesQuery = cafe.name?.contains(query, ignoreCase = true) ?: true
+            val matchesCategory = selectedCategories.isEmpty() || selectedCategories.contains(cafe.category)
+            val matchesPrice = selectedPriceRange == null || isPriceInRange(cafe.price)
+            val matchesRating = (cafe.rating?.toDoubleOrNull() ?: 0.0) >= selectedRatingThreshold
+
+            matchesQuery && matchesCategory && matchesPrice && matchesRating
         }
         _listAllCafe.value = filteredList
+    }
+
+    /**
+     * Updates the selected category filters.
+     */
+    fun updateCategories(categories: List<String>) {
+        selectedCategories = categories
+        filterCafes("") // Apply filter with updated parameters
+    }
+
+    /**
+     * Updates the selected price range filter.
+     */
+    fun updatePriceRange(priceRange: String?) {
+        selectedPriceRange = priceRange
+        filterCafes("") // Apply filter with updated parameters
+    }
+
+    /**
+     * Updates the selected rating threshold.
+     */
+    fun updateRatingThreshold(rating: Double) {
+        selectedRatingThreshold = rating
+        filterCafes("") // Apply filter with updated parameters
+    }
+
+    /**
+     * Checks if the given price string matches the selected price range.
+     */
+    private fun isPriceInRange(price: String?): Boolean {
+        return when {
+            price.isNullOrEmpty() -> false
+            selectedPriceRange == "1–25k" -> price.contains("1–25")
+            selectedPriceRange == "25–50k" -> price.contains("25–50")
+            selectedPriceRange == "50–75k" -> price.contains("50–75")
+            else -> false
+        }
+    }
+
+    fun getSession(): LiveData<UserModel> {
+        return repository.getSession().asLiveData()
     }
 }

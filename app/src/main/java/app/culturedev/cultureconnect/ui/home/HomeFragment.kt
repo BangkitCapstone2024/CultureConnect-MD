@@ -18,6 +18,7 @@ import app.culturedev.cultureconnect.databinding.FragmentHomeBinding
 import app.culturedev.cultureconnect.helper.ColorUtils
 import app.culturedev.cultureconnect.helper.NetworkUtil
 import app.culturedev.cultureconnect.ui.adapter.Adapter
+import app.culturedev.cultureconnect.ui.allCafe.AllCafeActivity
 import app.culturedev.cultureconnect.ui.auth.login.LoginActivity
 import app.culturedev.cultureconnect.ui.history.HistoryActivity
 import app.culturedev.cultureconnect.ui.notification.NotificationActivity
@@ -54,7 +55,6 @@ class HomeFragment : Fragment() {
 
         recommendationAdapter = Adapter()
         allCafeAdapter = Adapter()
-//        val searchView = binding.searchView
 
         binding.rvRecommendation.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -98,25 +98,13 @@ class HomeFragment : Fragment() {
         btnNotification()
         toMoodBased()
         getUsername()
-
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-//            androidx.appcompat.widget.SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                search(newText)
-//                return true
-//            }
-//
-//        })
     }
 
     private fun setupSearchView() {
         binding.searchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
-                navController.navigate(R.id.allCafePage)
+                val intent = Intent(requireContext(), AllCafeActivity::class.java)
+                startActivity(intent)
             }
         }
     }
@@ -167,20 +155,4 @@ class HomeFragment : Fragment() {
         }
     }
 
-//    private fun search(query: String?) {
-//        if (query != null) {
-//            val search = ArrayList<ListDataItem>()
-//            for (i in listCafe) {
-//                if (i.name?.lowercase(Locale.ROOT)!!.contains(query)) {
-//                    search.add(i)
-//                }
-//            }
-//
-//            if (search.isEmpty()) {
-//                Toast.makeText(context, "No data found", Toast.LENGTH_SHORT).show()
-//            } else {
-//                adapter.setSearchList(search)
-//            }
-//        }
-//    }
 }

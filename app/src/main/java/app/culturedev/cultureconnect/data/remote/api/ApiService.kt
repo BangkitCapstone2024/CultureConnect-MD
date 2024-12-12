@@ -33,13 +33,13 @@ interface ApiService {
         @Body body: RegisterRequest
     ): RegisterResponse
     
-    @GET("data")
+    @GET("/get_all_cafe_data")
     suspend fun getStories(
         @Header("Authorization")
         token: String
     ): DataRes
 
-    @GET("events?active=1")
+    @GET("cafe?active=1")
     fun getRecommendationCafe(): Call<DataRes>
 
     @GET("cafe?active=0")
@@ -48,7 +48,7 @@ interface ApiService {
     @GET("cafe?active=-1")
     fun searchCafe(@Query("q") query: String): Call<DataRes>
 
-    @GET("cafe/{id}")
+    @GET("/get_all_cafe_data/{title}")
     fun getCafeDetail(@Path("Title") id: String): Call<DataRes>
 
 //    @FormUrlEncoded
