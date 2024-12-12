@@ -48,7 +48,8 @@ class CafeRepo private constructor(
             userPreferences.saveSession(
                 UserModel(
                     username = request.username ?: "",
-                    sessionId = response.sessionId ?: ""
+                    sessionId = response.sessionId ?: "",
+                    email = email
                 )
             )
             emit(ResultCafe.Success(response))

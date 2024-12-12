@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
 
                         is ResultCafe.Success -> {
                             binding.progressBar.visibility = View.INVISIBLE
-                            Toast.makeText(this, "Sukses Login", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, "Login Success", Toast.LENGTH_LONG).show()
                             startActivity(
                                 Intent(
                                     this@LoginActivity,
