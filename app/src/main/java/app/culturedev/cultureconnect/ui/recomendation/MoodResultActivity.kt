@@ -46,6 +46,33 @@ class MoodResultActivity : AppCompatActivity() {
     private fun fetchUserMood() {
         val predictedMood = intent.getStringExtra(Utils.PREDICT_MOOD)
         val quoteMood = intent.getStringExtra(Utils.MOOD_QUOTE)
+
+        when (predictedMood) {
+            "Sadness" -> {
+                binding.ivMoodResult.setImageResource(R.drawable.sad)
+            }
+
+            "Joy" -> {
+                binding.ivMoodResult.setImageResource(R.drawable.joy)
+            }
+
+            "Anger" -> {
+                binding.ivMoodResult.setImageResource(R.drawable.angry)
+            }
+
+            "Love" -> {
+                binding.ivMoodResult.setImageResource(R.drawable.love)
+            }
+
+            "Fear" -> {
+//                binding.ivMoodResult.setImageResource(R.drawable.ic_surprise)
+            }
+
+            "Surprise" -> {
+
+            }
+
+        }
         binding.tvQuoteMood.text = predictedMood
         binding.tvDescriptionQuote.text = quoteMood
     }
