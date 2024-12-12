@@ -37,16 +37,16 @@ class RecommenderAdapter :
                 .into(binding.ivItemImage)
             binding.tvItemTitle.text = data.title
             binding.tvItemRating.text = data.rating
-            binding.tvItemPrice.text = data.price
+            binding.tvItemPrice.text = data.category
 
             binding.ivItemImage.setOnClickListener {
                 val context = binding.root.context
                 val intent = Intent(context, DetailActivity::class.java)
                 intent.putExtra(Utils.EXTRA_IMAGE, data.image)
                 intent.putExtra(Utils.EXTRA_CAFE_NAME, data.title)
-                intent.putExtra(Utils.EXTRA_RATING , data.rating)
-                intent.putExtra(Utils.EXTRA_ADDRESS , data.address)
-                intent.putExtra(Utils.EXTRA_PRICE,data.price)
+                intent.putExtra(Utils.EXTRA_RATING, data.rating)
+                intent.putExtra(Utils.EXTRA_ADDRESS, data.address)
+                intent.putExtra(Utils.EXTRA_PRICE, data.category)
                 context.startActivity(intent)
             }
 
@@ -55,16 +55,16 @@ class RecommenderAdapter :
                 val intent = Intent(context, DetailActivity::class.java)
                 intent.putExtra(Utils.EXTRA_IMAGE, data.image)
                 intent.putExtra(Utils.EXTRA_CAFE_NAME, data.title)
-                intent.putExtra(Utils.EXTRA_RATING , data.rating)
-                intent.putExtra(Utils.EXTRA_ADDRESS , data.address)
-                intent.putExtra(Utils.EXTRA_PRICE,data.price)
+                intent.putExtra(Utils.EXTRA_RATING, data.rating)
+                intent.putExtra(Utils.EXTRA_ADDRESS, data.address)
+                intent.putExtra(Utils.EXTRA_PRICE, data.category)
                 context.startActivity(intent)
             }
 
             binding.btnItemDirection.setOnClickListener {
                 val context = binding.root.context
                 val intentUri = Uri.parse(data.pageURL)
-                val mapIntent = Intent(Intent.ACTION_VIEW , intentUri)
+                val mapIntent = Intent(Intent.ACTION_VIEW, intentUri)
                 mapIntent.setPackage("com.google.android.apps.maps")
                 context.startActivity(mapIntent)
             }
