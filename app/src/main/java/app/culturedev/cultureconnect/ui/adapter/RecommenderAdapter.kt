@@ -1,19 +1,16 @@
 package app.culturedev.cultureconnect.ui.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import app.culturedev.cultureconnect.data.response.ListDataItem
+import app.culturedev.cultureconnect.data.response.recommendation.CafeRecommendation
 import app.culturedev.cultureconnect.databinding.ListItemBinding
-import app.culturedev.cultureconnect.helper.Utils
-import app.culturedev.cultureconnect.ui.detail.DetailActivity
 import com.bumptech.glide.Glide
 
-class Adapter:
-    ListAdapter<ListDataItem, Adapter.ViewHolder>(DIFF_CALLBACK) {
+class RecommenderAdapter :
+    ListAdapter<CafeRecommendation, RecommenderAdapter.ViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -30,30 +27,36 @@ class Adapter:
     inner class ViewHolder(private val binding: ListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: ListDataItem) {
+        fun bind(data: CafeRecommendation) {
             Glide.with(binding.root)
                 .load(data.image)
                 .into(binding.ivItemImage)
-            binding.tvItemTitle.text = data.name
-            binding.tvItemRating.text = data.schedule
+            binding.tvItemTitle.text = data.title
+            binding.tvItemRating.text = data.rating
             binding.tvItemPrice.text = data.price
 
-            binding.ivItemImage.setOnClickListener {
-                val context = binding.root.context
-                val intent = Intent(context, DetailActivity::class.java)
-                intent.putExtra(Utils.EXTRA_ID, data.id)
-                context.startActivity(intent)
-            }
+//            binding.ivItemImage.setOnClickListener {
+//                val context = binding.root.context
+//                val intent = Intent(context, DetailActivity::class.java)
+//                intent.putExtra(Utils.EXTRA_ID, data.)
+//                context.startActivity(intent)
+//            }
         }
     }
 
-    companion object{
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListDataItem>() {
-            override fun areItemsTheSame(oldItem: ListDataItem, newItem: ListDataItem): Boolean {
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CafeRecommendation>() {
+            override fun areItemsTheSame(
+                oldItem: CafeRecommendation,
+                newItem: CafeRecommendation
+            ): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: ListDataItem, newItem: ListDataItem): Boolean {
+            override fun areContentsTheSame(
+                oldItem: CafeRecommendation,
+                newItem: CafeRecommendation
+            ): Boolean {
                 return oldItem == newItem
             }
         }
