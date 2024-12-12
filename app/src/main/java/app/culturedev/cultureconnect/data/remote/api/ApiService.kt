@@ -7,8 +7,6 @@ import app.culturedev.cultureconnect.data.response.register.RegisterRequest
 import app.culturedev.cultureconnect.data.response.register.RegisterResponse
 import retrofit2.http.Body
 import app.culturedev.cultureconnect.data.response.DataRes
-import app.culturedev.cultureconnect.data.response.NotificationRes
-import app.culturedev.cultureconnect.data.response.NotificationResult
 import app.culturedev.cultureconnect.data.response.login.LoginResponse
 import retrofit2.Call
 import retrofit2.http.Field
@@ -51,14 +49,14 @@ interface ApiService {
     fun searchCafe(@Query("q") query: String): Call<DataRes>
 
     @GET("cafe/{id}")
-    fun getCafeDetail(@Path("id") id: String): Call<DataRes>
+    fun getCafeDetail(@Path("Title") id: String): Call<DataRes>
 
-    @FormUrlEncoded
-    @POST("notifications")
-    suspend fun notification(
-        @Body body: NotificationResult
-    ) : NotificationRes
-
-    @GET("SELECT * FROM notifications ORDER BY id DESC")
-    suspend fun getAllNotifications(): List<NotificationRes>
+//    @FormUrlEncoded
+//    @POST("notifications")
+//    suspend fun notification(
+//        @Body body: NotificationResult
+//    ) : NotificationRes
+//
+//    @GET("SELECT * FROM notifications ORDER BY id DESC")
+//    suspend fun getAllNotifications(): List<NotificationRes>
 }
