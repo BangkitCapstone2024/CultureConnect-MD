@@ -104,6 +104,10 @@ class CafeRepo private constructor(
         return cafeDao.getFavorite()
     }
 
+    fun getHistory(): LiveData<List<DataEntity>> {
+        return cafeDao.getHistory()
+    }
+
     private suspend fun insertEvent(events: List<DataEntity>) {
         cafeDao.insertFavorite(events)
     }

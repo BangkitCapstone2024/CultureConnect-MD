@@ -9,6 +9,7 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.culturedev.cultureconnect.R
 import app.culturedev.cultureconnect.data.response.DataRes
@@ -31,9 +32,9 @@ class HomeFragment : Fragment() {
     private val vm by viewModels<HomeViewModel> { FactoryViewModel.getInstance(requireContext()) }
     private var listCafe: ArrayList<ListDataItem> = ArrayList()
     private lateinit var adapter: Adapter
-    private lateinit var searchView: SearchView
     private lateinit var recommendationAdapter: Adapter
     private lateinit var allCafeAdapter: Adapter
+    private lateinit var navController: NavController
 
 
     override fun onCreateView(
@@ -46,7 +47,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.actionBar?.hide()
 
         if (!NetworkUtil.isOnline(requireContext())) {
             NetworkUtil.netToast(requireContext())
@@ -54,6 +54,7 @@ class HomeFragment : Fragment() {
 
         recommendationAdapter = Adapter()
         allCafeAdapter = Adapter()
+//        val searchView = binding.searchView
 
         binding.rvRecommendation.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -92,22 +93,32 @@ class HomeFragment : Fragment() {
         }
 
         ColorUtils.changeStatusBarColor(requireActivity().window, "#1B3E3B")
+        setupSearchView()
         btnHistory()
         btnNotification()
         toMoodBased()
         getUsername()
 
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+//            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                search(newText)
+//                return true
+//            }
+//
+//        })
+    }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                search(newText)
-                return true
+    private fun setupSearchView() {
+        binding.searchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                navController.navigate(R.id.allCafePage)
             }
-
-        })
+        }
     }
 
     private fun btnHistory() {
@@ -156,20 +167,20 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun search(query: String?) {
-        if (query != null) {
-            val search = ArrayList<ListDataItem>()
-            for (i in listCafe) {
-                if (i.name?.lowercase(Locale.ROOT)!!.contains(query)) {
-                    search.add(i)
-                }
-            }
-
-            if (search.isEmpty()) {
-                Toast.makeText(context, "No data found", Toast.LENGTH_SHORT).show()
-            } else {
-                adapter.setSearchList(search)
-            }
-        }
-    }
+//    private fun search(query: String?) {
+//        if (query != null) {
+//            val search = ArrayList<ListDataItem>()
+//            for (i in listCafe) {
+//                if (i.name?.lowercase(Locale.ROOT)!!.contains(query)) {
+//                    search.add(i)
+//                }
+//            }
+//
+//            if (search.isEmpty()) {
+//                Toast.makeText(context, "No data found", Toast.LENGTH_SHORT).show()
+//            } else {
+//                adapter.setSearchList(search)
+//            }
+//        }
+//    }
 }

@@ -21,4 +21,7 @@ interface Dao {
 
     @Query("SELECT EXISTS(SELECT * FROM cafe_table WHERE id = :cafeId AND isFavorite = 1)")
     suspend fun isFavorite(cafeId: String): Boolean
+
+    @Query("SELECT * FROM cafe_table WHERE isHistory = 1")
+    fun getHistory(): LiveData<List<DataEntity>>
 }

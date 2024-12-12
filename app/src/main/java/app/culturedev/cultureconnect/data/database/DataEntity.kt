@@ -40,6 +40,9 @@ data class DataEntity(
     @field:ColumnInfo(name = "isFavorite")
     var isFavorite: Boolean = false,
 
+    @field:ColumnInfo(name = "isHistory")
+    val isHistory: Boolean = false,
+
     @field:ColumnInfo(name = "status")
     val status: Boolean = false,
 )

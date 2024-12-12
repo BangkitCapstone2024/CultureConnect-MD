@@ -1,7 +1,6 @@
 package app.culturedev.cultureconnect.ui.viewmodel
 
 import android.app.Application
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -13,13 +12,14 @@ import app.culturedev.cultureconnect.data.remote.api.ApiConfig
 import app.culturedev.cultureconnect.data.repository.CafeRepo
 import app.culturedev.cultureconnect.data.response.DataRes
 import app.culturedev.cultureconnect.data.response.ListDataItem
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeViewModel(application: Application, private val repository: CafeRepo) : AndroidViewModel(application) {
+class HomeViewModel (application: Application, private val repository: CafeRepo) : AndroidViewModel(application) {
     companion object {
         private const val TAG = "HomeViewModel"
     }
@@ -50,12 +50,16 @@ class HomeViewModel(application: Application, private val repository: CafeRepo) 
                         if (response.isSuccessful) {
                             _listCafeRecommendation.value = response.body()?.listData
                         } else {
-                            Toast.makeText(getApplication(), "Failed to Fetch API", Toast.LENGTH_SHORT).show()
+                            launch(Dispatchers.Main) {
+                                Toast.makeText(getApplication(), "Failed to Fetch API", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
 
                     override fun onFailure(call: Call<DataRes>, t: Throwable) {
-                        Toast.makeText(getApplication(), "Failed to load events: ${t.message}", Toast.LENGTH_SHORT).show()
+                        launch(Dispatchers.Main) {
+                            Toast.makeText(getApplication(), "Failed to load events: ${t.message}", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 })
             } finally {
@@ -77,12 +81,17 @@ class HomeViewModel(application: Application, private val repository: CafeRepo) 
                             val event = response.body()?.listData
                             _listAllCafe.value = event?.take(10)
                         } else {
-                            Toast.makeText(getApplication(), "Failed to Fetch API", Toast.LENGTH_SHORT).show()
+                            launch(Dispatchers.Main) {
+                                Toast.makeText(getApplication(), "Failed to Fetch API", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
 
                     override fun onFailure(call: Call<DataRes>, t: Throwable) {
-                        Toast.makeText(getApplication(), "Failed to load events: ${t.message}", Toast.LENGTH_SHORT).show()
+                        launch(Dispatchers.Main) {
+                            Toast.makeText(getApplication(), "Failed to load events: ${t.message}", Toast.LENGTH_SHORT).show()
+                        }
+
                     }
                 })
             } finally {
