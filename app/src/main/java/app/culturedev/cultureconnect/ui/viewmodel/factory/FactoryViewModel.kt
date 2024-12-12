@@ -46,10 +46,6 @@ class FactoryViewModel(private val repository: CafeRepo) :
                 FavoriteViewModel(repository, appExecutors = AppExecutor()) as T
             }
 
-            modelClass.isAssignableFrom(DescribeMoodViewModel::class.java) -> {
-                DescribeMoodViewModel(repository) as T
-            }
-
             modelClass.isAssignableFrom(SettingsViewModel::class.java) -> {
                 SettingsViewModel(repository) as T
             }

@@ -34,24 +34,18 @@ interface ApiService {
     suspend fun register(
         @Body body: RegisterRequest
     ): RegisterResponse
-    
-    @GET("data")
-    suspend fun getStories(
-        @Header("Authorization")
-        token: String
-    ): DataRes
 
-    @GET("events?active=1")
-    fun getRecommendationCafe(): Call<DataRes>
 
-    @GET("cafe?active=0")
-    fun getAllCafe(): Call<DataRes>
+//    @GET("events?active=1")
+//    fun getRecommendationCafe(): Call<DataRes>
+//
+//    @GET("cafe?active=0")
+//    fun getAllCafe(): Call<DataRes>
+//
+//    @GET("cafe?active=-1")
+//    fun searchCafe(@Query("q") query: String): Call<DataRes>
 
-    @GET("cafe?active=-1")
-    fun searchCafe(@Query("q") query: String): Call<DataRes>
 
-    @GET("cafe/{id}")
-    fun getCafeDetail(@Path("id") id: String): Call<DataRes>
 
     @FormUrlEncoded
     @POST("notifications")

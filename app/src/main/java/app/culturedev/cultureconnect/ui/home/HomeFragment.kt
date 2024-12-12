@@ -16,7 +16,6 @@ import app.culturedev.cultureconnect.data.response.ListDataItem
 import app.culturedev.cultureconnect.databinding.FragmentHomeBinding
 import app.culturedev.cultureconnect.helper.ColorUtils
 import app.culturedev.cultureconnect.helper.NetworkUtil
-import app.culturedev.cultureconnect.ui.adapter.Adapter
 import app.culturedev.cultureconnect.ui.auth.login.LoginActivity
 import app.culturedev.cultureconnect.ui.history.HistoryActivity
 import app.culturedev.cultureconnect.ui.notification.NotificationActivity
@@ -30,10 +29,10 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val vm by viewModels<HomeViewModel> { FactoryViewModel.getInstance(requireContext()) }
     private var listCafe: ArrayList<ListDataItem> = ArrayList()
-    private lateinit var adapter: Adapter
+//    private lateinit var adapter: Adapter
     private lateinit var searchView: SearchView
-    private lateinit var recommendationAdapter: Adapter
-    private lateinit var allCafeAdapter: Adapter
+//    private lateinit var recommendationAdapter: Adapter
+//    private lateinit var allCafeAdapter: Adapter
 
 
     override fun onCreateView(
@@ -52,44 +51,44 @@ class HomeFragment : Fragment() {
             NetworkUtil.netToast(requireContext())
         }
 
-        recommendationAdapter = Adapter()
-        allCafeAdapter = Adapter()
+//        recommendationAdapter = Adapter()
+//        allCafeAdapter = Adapter()
 
-        binding.rvRecommendation.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = recommendationAdapter
-        }
+//        binding.rvRecommendation.apply {
+//            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+//            adapter = recommendationAdapter
+//        }
 
-        binding.rvAllCafe.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = allCafeAdapter
-
-        }
+//        binding.rvAllCafe.apply {
+//            layoutManager = LinearLayoutManager(context)
+//            adapter = allCafeAdapter
+//
+//        }
 
         vm.isLoading.observe(viewLifecycleOwner) { isLoading ->
             binding.recommendationProgressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         }
-
-        vm.listCafeRecommendation.observe(viewLifecycleOwner) {
-            if (it != null) {
-                recommendationAdapter.submitList(it)
-            } else {
-                Toast.makeText(context, "No data found", Toast.LENGTH_SHORT).show()
-            }
-        }
+//
+//        vm.listCafeRecommendation.observe(viewLifecycleOwner) {
+//            if (it != null) {
+//                recommendationAdapter.submitList(it)
+//            } else {
+//                Toast.makeText(context, "No data found", Toast.LENGTH_SHORT).show()
+//            }
+//        }
 
         vm.isLoading.observe(viewLifecycleOwner) { isLoading ->
             binding.allCafeProgressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         }
 
-        vm.listAllCafe.observe(viewLifecycleOwner) {
-            if (it != null) {
-                allCafeAdapter.submitList(it)
-                listCafe = it as ArrayList<ListDataItem>
-            } else {
-                Toast.makeText(context, "No data found", Toast.LENGTH_SHORT).show()
-            }
-        }
+//        vm.listAllCafe.observe(viewLifecycleOwner) {
+//            if (it != null) {
+//                allCafeAdapter.submitList(it)
+//                listCafe = it as ArrayList<ListDataItem>
+//            } else {
+//                Toast.makeText(context, "No data found", Toast.LENGTH_SHORT).show()
+//            }
+//        }
 
         ColorUtils.changeStatusBarColor(requireActivity().window, "#1B3E3B")
         btnHistory()
@@ -97,17 +96,17 @@ class HomeFragment : Fragment() {
         toMoodBased()
         getUsername()
 
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                search(newText)
-                return true
-            }
-
-        })
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                search(newText)
+//                return true
+//            }
+//
+//        })
     }
 
     private fun btnHistory() {
@@ -156,20 +155,20 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun search(query: String?) {
-        if (query != null) {
-            val search = ArrayList<ListDataItem>()
-            for (i in listCafe) {
-                if (i.name?.lowercase(Locale.ROOT)!!.contains(query)) {
-                    search.add(i)
-                }
-            }
-
-            if (search.isEmpty()) {
-                Toast.makeText(context, "No data found", Toast.LENGTH_SHORT).show()
-            } else {
-                adapter.setSearchList(search)
-            }
-        }
-    }
+//    private fun search(query: String?) {
+//        if (query != null) {
+//            val search = ArrayList<ListDataItem>()
+//            for (i in listCafe) {
+//                if (i.name?.lowercase(Locale.ROOT)!!.contains(query)) {
+//                    search.add(i)
+//                }
+//            }
+//
+//            if (search.isEmpty()) {
+//                Toast.makeText(context, "No data found", Toast.LENGTH_SHORT).show()
+//            } else {
+//                adapter.setSearchList(search)
+//            }
+//        }
+//    }
 }
