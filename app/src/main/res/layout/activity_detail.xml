@@ -10,8 +10,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/detail_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="wrap_content">
 
+        <!-- Image View for Detail Image -->
         <ImageView
             android:id="@+id/detail_image"
             android:layout_width="0dp"
@@ -23,6 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
+        <!-- Back Button -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnBack"
             style="@style/backButton"

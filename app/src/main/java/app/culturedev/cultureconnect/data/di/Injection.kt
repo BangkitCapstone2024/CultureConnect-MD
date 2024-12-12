@@ -7,6 +7,7 @@ import app.culturedev.cultureconnect.data.preferences.dataStore
 import app.culturedev.cultureconnect.data.remote.api.ApiConfig
 import app.culturedev.cultureconnect.data.repository.CafeRepo
 import app.culturedev.cultureconnect.helper.AppExecutor
+import app.culturedev.cultureconnect.data.repository.RecommendationRepository
 
 object Injection {
     fun provideRepository(context: Context): CafeRepo {
@@ -16,5 +17,10 @@ object Injection {
         val dao = database.cafeDao()
         val appExecutors = AppExecutor()
         return CafeRepo.getInstance(apiService, pref, dao, appExecutors)
+    }
+
+    fun provideRecommendationRepository(context: Context): RecommendationRepository {
+        val recommendationApiService = ApiConfig.getRecommendationService()
+        return RecommendationRepository.getInstance(recommendationApiService)
     }
 }

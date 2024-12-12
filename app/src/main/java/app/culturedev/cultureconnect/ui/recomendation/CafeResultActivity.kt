@@ -6,9 +6,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import app.culturedev.cultureconnect.R
+import app.culturedev.cultureconnect.data.response.recommendation.CafeRecommendation
 import app.culturedev.cultureconnect.databinding.ActivityCafeResultBinding
 import app.culturedev.cultureconnect.helper.NetworkUtil
+import app.culturedev.cultureconnect.helper.Utils
+import app.culturedev.cultureconnect.ui.adapter.RecommenderAdapter
 
 class CafeResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCafeResultBinding
@@ -27,8 +31,16 @@ class CafeResultActivity : AppCompatActivity() {
         }
         backToSendMood()
 
-        with(binding){
+        with(binding) {
             svCafe.setupWithSearchBar(sbSearchCafe)
+        }
+        val list = intent.getParcelableExtra<CafeRecommendation>(Utils.RECOMEN_PLACE)
+        val recommendation = RecommenderAdapter()
+        val cafeList = mutableListOf(list)
+        recommendation.submitList(cafeList)
+        binding.rvCafeRecomm.apply {
+            adapter = recommendation
+            layoutManager = LinearLayoutManager(context)
         }
     }
 

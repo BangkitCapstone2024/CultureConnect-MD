@@ -22,5 +22,20 @@ interface ApiConfig {
                 .build()
             return retrofit.create(ApiService::class.java)
         }
+
+        fun getRecommendationService(): RecommendationApiService {
+            val loggingInterceptor =
+                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+            val client = OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .build()
+
+            val retrofit = Retrofit.Builder()
+                .baseUrl("https://cultureconnect-ml-api-918545557139.asia-southeast2.run.app/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
+            return retrofit.create(RecommendationApiService::class.java)
+        }
     }
 }
