@@ -16,6 +16,7 @@ object Injection {
 
     fun provideRecommendationRepository(context: Context): RecommendationRepository {
         val recommendationApiService = ApiConfig.getRecommendationService()
-        return RecommendationRepository.getInstance(recommendationApiService)
+        val pref = UserPreferences.getInstance(context.dataStore)
+        return RecommendationRepository.getInstance(recommendationApiService,pref)
     }
 }
