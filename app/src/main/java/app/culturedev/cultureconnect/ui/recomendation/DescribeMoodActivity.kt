@@ -16,6 +16,7 @@ import app.culturedev.cultureconnect.helper.NetworkUtil
 import app.culturedev.cultureconnect.helper.Utils
 import app.culturedev.cultureconnect.ui.viewmodel.DescribeMoodViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.factory.RecommendationFactoryViewModel
+import java.util.ArrayList
 
 class DescribeMoodActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDescribeMoodBinding
@@ -63,13 +64,14 @@ class DescribeMoodActivity : AppCompatActivity() {
                             Intent(this@DescribeMoodActivity, MoodResultActivity::class.java)
                         intent.putExtra(Utils.PREDICT_MOOD, result.data.predictedMood)
                         intent.putExtra(Utils.MOOD_QUOTE, result.data.quote)
-                        intent.putExtra(Utils.LIST_PLACE, result.data.cafeRecommendation)
+                        val arrayListRecomendation = result.data.cafeRecommendation?.filterNotNull()?.let { ArrayList(it) }
+                        intent.putParcelableArrayListExtra(Utils.LIST_PLACE, arrayListRecomendation)
                         startActivity(intent)
                         finish()
                     }
 
                     is ResultCafe.Error -> {
-                        Toast.makeText(this , result.error ,Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
                         binding.progressBar.visibility = View.INVISIBLE
                     }
                 }

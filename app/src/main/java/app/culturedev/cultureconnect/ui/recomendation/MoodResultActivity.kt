@@ -7,14 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import app.culturedev.cultureconnect.R
-import app.culturedev.cultureconnect.data.response.recommendation.CafeRecommendation
+import app.culturedev.cultureconnect.data.response.recommendation.CafeRecommendationItem
 import app.culturedev.cultureconnect.databinding.ActivityMoodResultBinding
 import app.culturedev.cultureconnect.helper.NetworkUtil
 import app.culturedev.cultureconnect.helper.Utils
 
 class MoodResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMoodResultBinding
-    private lateinit var listed:CafeRecommendation
+    private lateinit var listed: ArrayList<CafeRecommendationItem>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,7 +30,7 @@ class MoodResultActivity : AppCompatActivity() {
         }
         getCafeRecommendations()
 
-        listed = intent.getParcelableExtra(Utils.LIST_PLACE)!!
+        listed = intent.getParcelableArrayListExtra(Utils.LIST_PLACE)!!
         fetchUserMood()
     }
 
@@ -46,6 +46,15 @@ class MoodResultActivity : AppCompatActivity() {
     private fun fetchUserMood() {
         val predictedMood = intent.getStringExtra(Utils.PREDICT_MOOD)
         val quoteMood = intent.getStringExtra(Utils.MOOD_QUOTE)
+
+        when (predictedMood) {
+            "Sadness" -> binding.ivMoodResult.setImageResource(R.drawable.sad)
+            "Joy" -> binding.ivMoodResult.setImageResource(R.drawable.joy)
+            "Love" -> binding.ivMoodResult.setImageResource(R.drawable.love)
+            "Anger" -> binding.ivMoodResult.setImageResource(R.drawable.angry)
+            "Fear" -> binding.ivMoodResult.setImageResource(R.drawable.fear)
+            "Surprise" -> binding.ivMoodResult.setImageResource(R.drawable.surprise)
+        }
         binding.tvQuoteMood.text = predictedMood
         binding.tvDescriptionQuote.text = quoteMood
     }

@@ -1,7 +1,12 @@
 <resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.CultureConnect" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/colorSecondary</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="font">@font/poppins</item>
+
     </style>
+
+    <style name="Theme.CultureConnect" parent="Base.Theme.CultureConnect" />
 </resources>
