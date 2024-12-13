@@ -37,7 +37,7 @@ class RecommenderAdapter :
                 .into(binding.ivItemImage)
             binding.tvItemTitle.text = data.title
             binding.tvItemRating.text = data.rating
-            binding.tvItemPrice.text = data.price
+            binding.tvItemPrice.text = data.category
 
             binding.ivItemImage.setOnClickListener {
                 val context = binding.root.context
