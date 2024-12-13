@@ -31,7 +31,7 @@ interface ApiConfig {
                 .build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://cultureconnect-ml-api-918545557139.asia-southeast2.run.app/")
+                .baseUrl(BuildConfig.PREDICT_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
