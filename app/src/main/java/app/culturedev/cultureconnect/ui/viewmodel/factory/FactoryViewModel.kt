@@ -15,7 +15,6 @@ import app.culturedev.cultureconnect.ui.viewmodel.FavoriteViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.HistoryViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.HomeViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.LoginViewModel
-import app.culturedev.cultureconnect.ui.viewmodel.MapsViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.RegisterViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.SettingsViewModel
 
@@ -31,10 +30,6 @@ class FactoryViewModel(private val repository: CafeRepo, private val recommendat
 
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(repository) as T
-            }
-
-            modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
-                MapsViewModel(repository) as T
             }
 
             modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> {
