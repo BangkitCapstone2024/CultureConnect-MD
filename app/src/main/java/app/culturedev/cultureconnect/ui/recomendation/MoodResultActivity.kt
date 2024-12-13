@@ -7,14 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import app.culturedev.cultureconnect.R
-import app.culturedev.cultureconnect.data.response.recommendation.CafeRecommendation
+import app.culturedev.cultureconnect.data.response.recommendation.CafeRecommendationItem
 import app.culturedev.cultureconnect.databinding.ActivityMoodResultBinding
 import app.culturedev.cultureconnect.helper.NetworkUtil
 import app.culturedev.cultureconnect.helper.Utils
 
 class MoodResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMoodResultBinding
-    private lateinit var listed:CafeRecommendation
+    private lateinit var listed: ArrayList<CafeRecommendationItem>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,7 +30,7 @@ class MoodResultActivity : AppCompatActivity() {
         }
         getCafeRecommendations()
 
-        listed = intent.getParcelableExtra(Utils.LIST_PLACE)!!
+        listed = intent.getParcelableArrayListExtra<CafeRecommendationItem>(Utils.LIST_PLACE)!!
         fetchUserMood()
     }
 
