@@ -8,7 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.culturedev.cultureconnect.R
-import app.culturedev.cultureconnect.data.response.recommendation.CafeRecommendation
+import app.culturedev.cultureconnect.data.response.recommendation.CafeRecommendationItem
 import app.culturedev.cultureconnect.databinding.ActivityCafeResultBinding
 import app.culturedev.cultureconnect.helper.NetworkUtil
 import app.culturedev.cultureconnect.helper.Utils
@@ -25,13 +25,12 @@ class CafeResultActivity : AppCompatActivity() {
         }
         backToSendMood()
 
-//        with(binding) {
-//            svCafe.setupWithSearchBar(sbSearchCafe)
-//        }
-        val list = intent.getParcelableExtra<CafeRecommendation>(Utils.RECOMEN_PLACE)
+        with(binding) {
+            svCafe.setupWithSearchBar(sbSearchCafe)
+        }
+        val list = intent.getParcelableArrayListExtra<CafeRecommendationItem>(Utils.RECOMEN_PLACE)
         val recommendation = RecommenderAdapter()
-        val cafeList = mutableListOf(list)
-        recommendation.submitList(cafeList)
+        recommendation.submitList(list)
         binding.rvCafeRecomm.apply {
             adapter = recommendation
             layoutManager = LinearLayoutManager(context)

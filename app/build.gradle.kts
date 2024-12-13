@@ -20,6 +20,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String","BASE_URL" , "${project.findProperty("BASE_URL")}")
+        buildConfigField("String" , "PREDICT_URL" , "${project.findProperty("PREDICT_URL")}")
         buildConfigField("String" , "MAPS_API_KEY" , "${project.findProperty("MAPS_API_KEY")}")
     }
 
