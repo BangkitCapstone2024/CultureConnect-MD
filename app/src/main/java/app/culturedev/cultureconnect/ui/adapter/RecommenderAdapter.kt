@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import app.culturedev.cultureconnect.data.response.recommendation.CafeRecommendation
+import app.culturedev.cultureconnect.data.response.recommendation.CafeRecommendationItem
 import app.culturedev.cultureconnect.databinding.ListItemBinding
 import app.culturedev.cultureconnect.helper.Utils
 import app.culturedev.cultureconnect.ui.detail.DetailActivity
 import com.bumptech.glide.Glide
 
 class RecommenderAdapter :
-    ListAdapter<CafeRecommendation, RecommenderAdapter.ViewHolder>(DIFF_CALLBACK) {
+    ListAdapter<CafeRecommendationItem, RecommenderAdapter.ViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -31,7 +31,7 @@ class RecommenderAdapter :
     inner class ViewHolder(private val binding: ListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: CafeRecommendation) {
+        fun bind(data: CafeRecommendationItem) {
             Glide.with(binding.root)
                 .load(data.image)
                 .into(binding.ivItemImage)
@@ -44,9 +44,9 @@ class RecommenderAdapter :
                 val intent = Intent(context, DetailActivity::class.java)
                 intent.putExtra(Utils.EXTRA_IMAGE, data.image)
                 intent.putExtra(Utils.EXTRA_CAFE_NAME, data.title)
-                intent.putExtra(Utils.EXTRA_RATING , data.rating)
-                intent.putExtra(Utils.EXTRA_ADDRESS , data.address)
-                intent.putExtra(Utils.EXTRA_PRICE,data.price)
+                intent.putExtra(Utils.EXTRA_RATING, data.rating)
+                intent.putExtra(Utils.EXTRA_ADDRESS, data.address)
+                intent.putExtra(Utils.EXTRA_PRICE, data.price)
                 context.startActivity(intent)
             }
 
@@ -55,16 +55,16 @@ class RecommenderAdapter :
                 val intent = Intent(context, DetailActivity::class.java)
                 intent.putExtra(Utils.EXTRA_IMAGE, data.image)
                 intent.putExtra(Utils.EXTRA_CAFE_NAME, data.title)
-                intent.putExtra(Utils.EXTRA_RATING , data.rating)
-                intent.putExtra(Utils.EXTRA_ADDRESS , data.address)
-                intent.putExtra(Utils.EXTRA_PRICE,data.price)
+                intent.putExtra(Utils.EXTRA_RATING, data.rating)
+                intent.putExtra(Utils.EXTRA_ADDRESS, data.address)
+                intent.putExtra(Utils.EXTRA_PRICE, data.price)
                 context.startActivity(intent)
             }
 
             binding.btnItemDirection.setOnClickListener {
                 val context = binding.root.context
                 val intentUri = Uri.parse(data.pageURL)
-                val mapIntent = Intent(Intent.ACTION_VIEW , intentUri)
+                val mapIntent = Intent(Intent.ACTION_VIEW, intentUri)
                 mapIntent.setPackage("com.google.android.apps.maps")
                 context.startActivity(mapIntent)
             }
@@ -72,17 +72,17 @@ class RecommenderAdapter :
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CafeRecommendation>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<CafeRecommendationItem>() {
             override fun areItemsTheSame(
-                oldItem: CafeRecommendation,
-                newItem: CafeRecommendation
+                oldItem: CafeRecommendationItem,
+                newItem: CafeRecommendationItem
             ): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: CafeRecommendation,
-                newItem: CafeRecommendation
+                oldItem: CafeRecommendationItem,
+                newItem: CafeRecommendationItem
             ): Boolean {
                 return oldItem == newItem
             }
