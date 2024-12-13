@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import app.culturedev.cultureconnect.data.di.Injection
 import app.culturedev.cultureconnect.data.repository.RecommendationRepository
 import app.culturedev.cultureconnect.ui.viewmodel.DescribeMoodViewModel
+import app.culturedev.cultureconnect.ui.viewmodel.DetailViewModel
+import app.culturedev.cultureconnect.ui.viewmodel.HomeViewModel
 
 class RecommendationFactoryViewModel(private val repository: RecommendationRepository) :
     ViewModelProvider.Factory {
@@ -14,6 +16,14 @@ class RecommendationFactoryViewModel(private val repository: RecommendationRepos
         return when {
             modelClass.isAssignableFrom(DescribeMoodViewModel::class.java) -> {
                 DescribeMoodViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                HomeViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
+                DetailViewModel(repository) as T
             }
 
             else -> {

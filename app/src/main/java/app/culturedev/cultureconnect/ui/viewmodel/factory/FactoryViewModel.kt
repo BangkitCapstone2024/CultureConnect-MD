@@ -5,10 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import app.culturedev.cultureconnect.data.di.Injection
 import app.culturedev.cultureconnect.data.repository.CafeRepo
-import app.culturedev.cultureconnect.ui.viewmodel.DescribeMoodViewModel
-import app.culturedev.cultureconnect.ui.viewmodel.DetailViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.FavoriteViewModel
-import app.culturedev.cultureconnect.ui.viewmodel.HomeViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.LoginViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.MapsViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.RegisterViewModel
@@ -26,14 +23,6 @@ class FactoryViewModel(private val repository: CafeRepo) :
 
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(repository) as T
-            }
-
-            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
-                DetailViewModel(repository) as T
-            }
-
-            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
-                HomeViewModel(repository) as T
             }
 
             modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
