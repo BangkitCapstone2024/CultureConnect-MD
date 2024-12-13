@@ -76,12 +76,12 @@ class HistoryActivity : AppCompatActivity() {
     private fun setupSearchView() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let { historyViewModel.filterHistory(it) }
+                query?.let { historyViewModel.searchHistory(it) }
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                newText?.let { historyViewModel.filterHistory(it) }
+                newText?.let { historyViewModel.searchHistory(it) }
                 return true
             }
         })

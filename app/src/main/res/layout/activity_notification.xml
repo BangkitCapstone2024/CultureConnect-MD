@@ -25,7 +25,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
-            android:id="@+id/notificationTitle"
+            android:id="@+id/notificationPageTitle"
             style="@style/notificationTitle"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/backButton"

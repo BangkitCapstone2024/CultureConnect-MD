@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import app.culturedev.cultureconnect.data.di.Injection
 import app.culturedev.cultureconnect.data.repository.CafeRepo
+import app.culturedev.cultureconnect.data.repository.RecommendationRepository
 import app.culturedev.cultureconnect.helper.AppExecutor
 import app.culturedev.cultureconnect.ui.viewmodel.AllCafeViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.DescribeMoodViewModel
@@ -18,7 +19,7 @@ import app.culturedev.cultureconnect.ui.viewmodel.MapsViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.RegisterViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.SettingsViewModel
 
-class FactoryViewModel(private val repository: CafeRepo) :
+class FactoryViewModel(private val repository: CafeRepo, private val recommendationRepository: RecommendationRepository) :
     ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
@@ -37,11 +38,11 @@ class FactoryViewModel(private val repository: CafeRepo) :
             }
 
             modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> {
-                FavoriteViewModel(repository, appExecutors = AppExecutor()) as T
+                FavoriteViewModel(recommendationRepository) as T
             }
 
             modelClass.isAssignableFrom(HistoryViewModel::class.java) -> {
-                HistoryViewModel(repository, appExecutors = AppExecutor()) as T
+                HistoryViewModel(recommendationRepository) as T
             }
 
             modelClass.isAssignableFrom(AllCafeViewModel::class.java) -> {
@@ -66,7 +67,10 @@ class FactoryViewModel(private val repository: CafeRepo) :
         fun getInstance(context: Context): FactoryViewModel {
             if (INSTANCE == null) {
                 synchronized(FactoryViewModel::class.java) {
-                    INSTANCE = FactoryViewModel(Injection.provideRepository(context))
+                    INSTANCE = FactoryViewModel(
+                        Injection.provideRepository(context),
+                        Injection.provideRecommendationRepository(context)
+                    )
                 }
             }
             return INSTANCE as FactoryViewModel

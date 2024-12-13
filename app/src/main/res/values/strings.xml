@@ -42,7 +42,7 @@
     <string name="kirim">Kirim</string>
     <string name="hasil_mood">Mood Results</string>
     <string name="kata_kata">Words</string>
-    <string name="cari_tempat_sesuai_mood">CARI TEMPAT SESUAI MOOD</string>
+    <string name="cari_tempat_sesuai_mood">Mood Based Recommendation</string>
     <string name="cafe_recommendations">Cafe Recommendations</string>
     <string name="search">Search</string>
     <string name="search_hint">Search here …</string>

@@ -24,6 +24,7 @@ import app.culturedev.cultureconnect.ui.adapter.ListCafeAdapter
 import app.culturedev.cultureconnect.ui.auth.login.LoginActivity
 import app.culturedev.cultureconnect.ui.history.HistoryActivity
 import app.culturedev.cultureconnect.ui.notification.NotificationActivity
+import app.culturedev.cultureconnect.ui.recomendation.CafeResultActivity
 import app.culturedev.cultureconnect.ui.recomendation.DescribeMoodActivity
 import app.culturedev.cultureconnect.ui.viewmodel.HomeViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.factory.FactoryViewModel
@@ -101,8 +102,6 @@ class HomeFragment : Fragment() {
         btnNotification()
         toMoodBased()
         getUsername()
-        getAllCafe()
-        binding.allCafeProgressBar.visibility = View.INVISIBLE
     }
 
     private fun setupSearchView() {
@@ -182,6 +181,20 @@ class HomeFragment : Fragment() {
             } else {
                 binding.username.text = it.username
             }
+        }
+    }
+
+    private fun btnSeeMoreRecommendation(){
+        binding.seeMoreRecommendation.setOnClickListener {
+            val intent = Intent(requireContext(), CafeResultActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun btnSeeMoreAllCafe(){
+        binding.seeMoreAllCafe.setOnClickListener {
+            val intent = Intent(requireContext(), AllCafeActivity::class.java)
+            startActivity(intent)
         }
     }
 }

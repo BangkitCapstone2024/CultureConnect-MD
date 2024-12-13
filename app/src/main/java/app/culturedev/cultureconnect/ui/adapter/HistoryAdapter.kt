@@ -1,6 +1,5 @@
 package app.culturedev.cultureconnect.ui.adapter
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import app.culturedev.cultureconnect.data.database.DataEntity
 import app.culturedev.cultureconnect.databinding.ListItemBinding
 import app.culturedev.cultureconnect.helper.Utils
+import app.culturedev.cultureconnect.ui.adapter.FavoriteAdapter.Companion.DIFF_CALLBACK
 import app.culturedev.cultureconnect.ui.detail.DetailActivity
 import com.bumptech.glide.Glide
 
-class FavoriteAdapter(
-    private val onFavoriteClick: (DataEntity) -> Unit
-) : ListAdapter<DataEntity, FavoriteAdapter.ViewHolder>(DIFF_CALLBACK) {
-
+class HistoryAdapter (
+    private val onHistoryClick: (DataEntity) -> Unit
+) : ListAdapter<DataEntity, HistoryAdapter.ViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -52,7 +51,7 @@ class FavoriteAdapter(
 
             // Handle favorite click using the provided callback
             binding.root.setOnLongClickListener {
-                onFavoriteClick(data)
+                onHistoryClick(data)
                 true
             }
         }

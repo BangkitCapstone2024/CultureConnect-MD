@@ -1,52 +1,38 @@
 package app.culturedev.cultureconnect.ui.notification
 
-import android.content.Intent
+import NotificationAdapter
 import android.os.Bundle
-import android.view.View
-import android.webkit.WebView
-import android.webkit.WebViewClient
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import app.culturedev.cultureconnect.R
-import app.culturedev.cultureconnect.databinding.ActivityNotificationBinding
-import app.culturedev.cultureconnect.ui.MainActivity
-import app.culturedev.cultureconnect.ui.viewmodel.NotificationViewModel
-import app.culturedev.cultureconnect.ui.viewmodel.factory.FactoryViewModel
+import app.culturedev.cultureconnect.data.database.NotificationData
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class NotificationActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityNotificationBinding
-    private val notificationViewModel: NotificationViewModel by lazy {
-        ViewModelProvider(this, FactoryViewModel.getInstance(this))[NotificationViewModel::class.java]
-    }
+
+    private lateinit var notificationAdapter: NotificationAdapter
+    private val notificationList = mutableListOf<NotificationData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityNotificationBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_notification)
 
-        setupSearchView()
+        // Initialize RecyclerView and Adapter
+        val notificationRecyclerView: RecyclerView = findViewById(R.id.notificationList)
+        notificationRecyclerView.layoutManager = LinearLayoutManager(this)
+        notificationAdapter = NotificationAdapter(notificationList)
+        notificationRecyclerView.adapter = notificationAdapter
 
-        binding.backButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+        // Handle back button action
+        val backButton: FloatingActionButton = findViewById(R.id.backButton)
+        backButton.setOnClickListener {
             finish()
         }
     }
 
-    private fun setupSearchView() {
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let { notificationViewModel.filterNotify(it) }
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                newText?.let { notificationViewModel.filterNotify(it) }
-                return true
-            }
-        })
+    // Function to add notifications to the list
+    fun addNotification(notification: NotificationData) {
+        notificationAdapter.addNotification(notification)
     }
 }

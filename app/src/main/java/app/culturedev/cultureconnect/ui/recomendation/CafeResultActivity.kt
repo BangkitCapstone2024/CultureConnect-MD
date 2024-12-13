@@ -12,6 +12,7 @@ import app.culturedev.cultureconnect.data.response.recommendation.CafeRecommenda
 import app.culturedev.cultureconnect.databinding.ActivityCafeResultBinding
 import app.culturedev.cultureconnect.helper.NetworkUtil
 import app.culturedev.cultureconnect.helper.Utils
+import app.culturedev.cultureconnect.ui.MainActivity
 import app.culturedev.cultureconnect.ui.adapter.RecommenderAdapter
 
 class CafeResultActivity : AppCompatActivity() {
@@ -25,9 +26,6 @@ class CafeResultActivity : AppCompatActivity() {
         }
         backToSendMood()
 
-        with(binding) {
-            svCafe.setupWithSearchBar(sbSearchCafe)
-        }
         val list = intent.getParcelableArrayListExtra<CafeRecommendationItem>(Utils.RECOMEN_PLACE)
         val recommendation = RecommenderAdapter()
         recommendation.submitList(list)
@@ -39,7 +37,7 @@ class CafeResultActivity : AppCompatActivity() {
 
     private fun backToSendMood() {
         binding.btnBack.setOnClickListener {
-            startActivity(Intent(this@CafeResultActivity, DescribeMoodActivity::class.java))
+            startActivity(Intent(this@CafeResultActivity, MainActivity::class.java))
         }
     }
 }

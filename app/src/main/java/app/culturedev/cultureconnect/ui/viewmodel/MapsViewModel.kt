@@ -5,6 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import app.culturedev.cultureconnect.data.repository.CafeRepo
 
-class MapsViewModel (application: Application, private val repository:CafeRepo): AndroidViewModel(application) {
+class MapsViewModel (private val repository:CafeRepo): ViewModel() {
 
 }

@@ -58,9 +58,9 @@ class FavoriteFragment : Fragment() {
             binding.favoriteProgressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         }
 
-        favoriteViewModel.listCafeFavorite.observe(viewLifecycleOwner) { events ->
-            if (events != null) {
-                adapter.submitList(events)
+        favoriteViewModel.listCafeFavorite.observe(viewLifecycleOwner) {
+            if (it != null) {
+                adapter.submitList(it)
             } else {
                 Toast.makeText(context, "No favorite cafe", Toast.LENGTH_SHORT).show()
             }

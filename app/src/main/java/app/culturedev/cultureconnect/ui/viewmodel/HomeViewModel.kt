@@ -9,7 +9,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import app.culturedev.cultureconnect.data.model.UserModel
 import app.culturedev.cultureconnect.data.remote.api.ApiConfig
-import app.culturedev.cultureconnect.data.repository.CafeRepo
+import app.culturedev.cultureconnect.data.repository.RecommendationRepository
 import app.culturedev.cultureconnect.data.response.DataRes
 import app.culturedev.cultureconnect.data.response.ListDataItem
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +19,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HomeViewModel (application: Application, private val repository: CafeRepo) : AndroidViewModel(application) {
+class HomeViewModel (application: Application, private val repository: RecommendationRepository) : AndroidViewModel(application) {
     companion object {
         private const val TAG = "HomeViewModel"
     }

@@ -8,6 +8,8 @@ import androidx.room.RoomDatabase
 @Database (entities = [DataEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun cafeDao(): Dao
+    abstract fun favoriteDao(): FavoriteDao
+    abstract fun historyDao(): HistoryDao
     companion object {
         @Volatile
         private var INSTANCE: AppDatabase? = null
@@ -16,7 +18,7 @@ abstract class AppDatabase: RoomDatabase() {
                 INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "cafe_table"
+                    "cafe_table",
                 ).build().also { INSTANCE = it }
             }
     }

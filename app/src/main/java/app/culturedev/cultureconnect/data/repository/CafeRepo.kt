@@ -26,11 +26,8 @@ import retrofit2.HttpException
 
 class CafeRepo private constructor(
     private val apiService: ApiService,
-    private val userPreferences: UserPreferences,
-    private val cafeDao: Dao,
-    private val appExecutors: AppExecutor
+    private val userPreferences: UserPreferences
 ) {
-    private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     fun getSession(): Flow<UserModel> {
         return userPreferences.getSession()
@@ -101,60 +98,15 @@ class CafeRepo private constructor(
         userPreferences.logout()
     }
 
-    fun getFavorite(): LiveData<List<DataEntity>> {
-        return cafeDao.getFavorite()
-    }
-
-    fun getHistory(): LiveData<List<DataEntity>> {
-        return cafeDao.getHistory()
-    }
-
-    private suspend fun insertEvent(events: List<DataEntity>) {
-        cafeDao.insertFavorite(events)
-    }
-
-    fun saveEvent(cafe: List<ListDataItem>, status: Boolean) {
-        val cafeList = cafe.map {
-            DataEntity(
-                it.id  ?: "",
-                it.image ?: "",
-                it.name ?: "",
-                it.rating ?: "",
-                it.category ?: "",
-                it.address ?: "",
-                it.phoneNumber ?: "",
-                it.price ?: "",
-                it.schedule ?: "",
-                it.menu ?: "",
-                false,
-                status
-            )
-        }
-        coroutineScope.launch {
-            insertEvent(cafeList)
-        }
-    }
-
-    suspend fun updateFavoriteStatus(cafeId: String, isFavorite: Boolean) {
-        cafeDao.updateFavoriteStatus(cafeId, isFavorite)
-    }
-
-    fun isEventFavorites(cafeId: String) = liveData {
-        val isFavorites = cafeDao.isFavorite(cafeId)
-        emit(isFavorites)
-    }
-
     companion object {
         @Volatile
         private var instance: CafeRepo? = null
         fun getInstance(
             apiService: ApiService,
-            userPreference: UserPreferences,
-            eventDao: Dao,
-            appExecutors: AppExecutor
+            userPreference: UserPreferences
         ): CafeRepo =
             instance ?: synchronized(this) {
-                instance ?: CafeRepo (apiService, userPreference, eventDao, appExecutors)
+                instance ?: CafeRepo (apiService, userPreference)
             }.also { instance = it }
     }
 }
