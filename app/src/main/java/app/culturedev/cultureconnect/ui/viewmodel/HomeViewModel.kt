@@ -109,4 +109,6 @@ class HomeViewModel (application: Application, private val repository: CafeRepo)
             repository.saveEvent(events, status)
         }
     }
+
+    fun getAllCafeData() = repository.getAllCafeDate()
 }

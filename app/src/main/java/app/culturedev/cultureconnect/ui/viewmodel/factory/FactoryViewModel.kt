@@ -32,16 +32,8 @@ class FactoryViewModel(private val repository: CafeRepo) :
                 RegisterViewModel(repository) as T
             }
 
-            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
-                DetailViewModel(application = Application(), repository) as T
-            }
-
-            modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
-                HomeViewModel(application = Application(), repository) as T
-            }
-
             modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
-                MapsViewModel(application = Application(), repository) as T
+                MapsViewModel(repository) as T
             }
 
             modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> {

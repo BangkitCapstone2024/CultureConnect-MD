@@ -14,11 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import app.culturedev.cultureconnect.R
 import app.culturedev.cultureconnect.data.response.DataRes
 import app.culturedev.cultureconnect.data.response.ListDataItem
+import app.culturedev.cultureconnect.data.result.ResultCafe
 import app.culturedev.cultureconnect.databinding.FragmentHomeBinding
 import app.culturedev.cultureconnect.helper.ColorUtils
 import app.culturedev.cultureconnect.helper.NetworkUtil
 import app.culturedev.cultureconnect.ui.adapter.Adapter
 import app.culturedev.cultureconnect.ui.allCafe.AllCafeActivity
+import app.culturedev.cultureconnect.ui.adapter.ListCafeAdapter
 import app.culturedev.cultureconnect.ui.auth.login.LoginActivity
 import app.culturedev.cultureconnect.ui.history.HistoryActivity
 import app.culturedev.cultureconnect.ui.notification.NotificationActivity
@@ -26,6 +28,7 @@ import app.culturedev.cultureconnect.ui.recomendation.DescribeMoodActivity
 import app.culturedev.cultureconnect.ui.viewmodel.HomeViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.factory.FactoryViewModel
 import java.util.Locale
+import app.culturedev.cultureconnect.ui.viewmodel.factory.RecommendationFactoryViewModel
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -98,6 +101,8 @@ class HomeFragment : Fragment() {
         btnNotification()
         toMoodBased()
         getUsername()
+        getAllCafe()
+        binding.allCafeProgressBar.visibility = View.INVISIBLE
     }
 
     private fun setupSearchView() {
@@ -145,6 +150,31 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun getAllCafe() {
+        val listCafeAdapter = ListCafeAdapter()
+        vm.getAllCafeData().observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is ResultCafe.Loading -> {
+                    binding.allCafeProgressBar.visibility = View.VISIBLE
+                }
+
+                is ResultCafe.Success -> {
+                    binding.allCafeProgressBar.visibility = View.INVISIBLE
+                    listCafeAdapter.submitList(result.data.cafeData?.take(10))
+                    binding.rvAllCafe.apply {
+                        layoutManager = LinearLayoutManager(context)
+                        adapter = listCafeAdapter
+                    }
+                }
+
+                is ResultCafe.Error -> {
+                    binding.allCafeProgressBar.visibility = View.INVISIBLE
+                    Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
     private fun getUsername() {
         vm.getSession().observe(viewLifecycleOwner) {
             if (it.sessionId.isEmpty()) {
@@ -154,5 +184,4 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
 }
