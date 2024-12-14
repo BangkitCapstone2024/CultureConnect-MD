@@ -8,6 +8,7 @@ import app.culturedev.cultureconnect.data.repository.RecommendationRepository
 import app.culturedev.cultureconnect.ui.viewmodel.DescribeMoodViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.DetailViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.HomeViewModel
+import app.culturedev.cultureconnect.ui.viewmodel.MapsViewModel
 
 class RecommendationFactoryViewModel(private val repository: RecommendationRepository) :
     ViewModelProvider.Factory {
@@ -20,6 +21,10 @@ class RecommendationFactoryViewModel(private val repository: RecommendationRepos
 
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
                 HomeViewModel(repository) as T
+            }
+
+            modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
+                MapsViewModel(repository) as T
             }
 
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
