@@ -4,6 +4,42 @@
         <item name="android:fontFamily">@font/poppins</item>
     </style>
 
+    <style name="cardViewLayout">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="elevation">4dp</item>
+        <item name="android:backgroundTint">@color/cardView</item>
+    </style>
+
+    <style name="backButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
+        <item name="android:outlineAmbientShadowColor">@android:color/transparent</item>
+        <item name="android:outlineSpotShadowColor">@android:color/transparent</item>
+        <item name="android:src">@drawable/baseline_arrow_back_ios_new_24</item>
+        <item name="fabCustomSize">35dp</item>
+    </style>
+
+    <style name="fabBookmark">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:src">@drawable/baseline_bookmark_24</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="fabCustomSize">35dp</item>
+    </style>
+
+    <style name="fabNotification">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:src">@drawable/baseline_notifications_active_24</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
+        <item name="android:outlineSpotShadowColor">@android:color/transparent</item>
+        <item name="android:outlineAmbientShadowColor">@android:color/transparent</item>
+        <item name="fabCustomSize">35dp</item>
+    </style>
+
     <!--    Onboarding One-->
     <style name="onboardingOneMainLayout">
         <item name="android:layout_width">match_parent</item>
@@ -181,39 +217,146 @@
         <item name="android:layout_marginTop">10dp</item>
     </style>
 
+    <!--    Registration-->
+    <style name="registerMainLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:padding">20dp</item>
+    </style>
+
+    <style name="registerTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Sign up</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="textAccountData">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Account Data</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">30dp</item>
+    </style>
+
+    <style name="registerNameLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">25dp</item>
+    </style>
+
+    <style name="edtRegisterName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">Name</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="registerEmailLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">25dp</item>
+    </style>
+
+    <style name="edtRegisterEmail">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">Email</item>
+        <item name="android:inputType">textEmailAddress</item>
+    </style>
+
+    <style name="registerPasswordLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="passwordToggleEnabled">true</item>
+    </style>
+
+    <style name="edtRegisterPassword">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">Password</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="passwordToggleEnabled">true</item>
+    </style>
+
+    <style name="registerPasswordConfirmLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="passwordToggleEnabled">true</item>
+    </style>
+
+    <style name="edtRegisPasswordConfirm">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:hint">Confirm Password</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="passwordToggleEnabled">true</item>
+    </style>
+
+    <style name="btnRegister">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Register</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:layout_marginTop">50dp</item>
+    </style>
+
     <!--    Home Fragment-->
     <style name="welcome">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">Have a Great Day !</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/gray</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">10dp</item>
     </style>
 
     <style name="username">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">Denis</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">10dp</item>
     </style>
 
     <style name="recommendationTitle">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">Recommendation cafe for you</item>
+        <item name="android:text">Cafe Recommendation</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="itemTitle">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">List all cafe</item>
+        <item name="android:text">All cafe</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="seeMore">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">See more</item>
+        <item name="android:drawableEnd">@drawable/baseline_arrow_forward_24</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -229,8 +372,10 @@
     </style>
 
     <style name="tv_recommendation_rating">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawableStart">@drawable/baseline_star_24</item>
+        <item name="android:drawablePadding">4dp</item>
         <item name="android:text">4,6 (1.037)</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/gray</item>
@@ -245,21 +390,28 @@
     </style>
 
     <style name="btn_direction">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">Direction</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_weight">1</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:backgroundTint">@color/buttonPrimary</item>
+        <item name="android:layout_marginEnd">10dp</item>
     </style>
 
     <style name="btn_detail">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">See detail</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:layout_weight">1</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:backgroundTint">@color/buttonSecondary</item>
     </style>
 
     <!--    Card View Item -->
@@ -270,25 +422,77 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:paddingBottom">8dp</item>
     </style>
 
     <!--    Detail Activity-->
     <style name="detailTitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">Solo</item>
+        <item name="android:text">Pixel Coffee &amp; Kitchen</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!--    <style name="detailDescription">-->
-    <!--        <item name="android:layout_width">match_parent</item>-->
-    <!--        <item name="android:layout_height">wrap_content</item>-->
-    <!--        <item name="android:text">Tes</item>-->
-    <!--        <item name="android:textSize">20sp</item>-->
-    <!--        <item name="android:textColor">@color/black</item>-->
-    <!--    </style>-->
+    <style name="detailRating">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawableStart">@drawable/baseline_star_24</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:text">4,6 (1.037)</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="detailCategory">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Kedai Kopi</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+    
+    <style name="detailAddress">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Jl. Satrio Wibowo No.35, Purwosari, Kec. Laweyan, Kota Surakarta, Jawa Tengah 57142</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="detailImageContact">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:src">@drawable/telephone_icon</item>
+    </style>
+    
+    <style name="detailContact">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">0271721505</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginStart">10dp</item>
+    </style>
+
+    <style name="detailImagePrice">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:src">@drawable/wallet_icon</item>
+    </style>
+
+    <style name="detailPrice">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Rp 25–50 rb</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginStart">10dp</item>
+    </style>
 
     <!--    Favorite Fragment-->
     <style name="bookmarkTitle">
@@ -306,6 +510,69 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">Nearest Cafe</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--    Notification Activity-->
+    <style name="notificationTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Notification</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--    Notification Item-->
+    <style name="notificationItemTitle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Coffee Lovers, Promo Spesial!</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingHorizontal">10dp</item>
+    </style>
+
+    <style name="notificationItemContent">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Nikmati kopi berkualitas dengan rasa tak tertandingi.</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:paddingHorizontal">10dp</item>
+    </style>
+
+    <style name="notificationItemTime">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">12.18 PM</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingHorizontal">10dp</item>
+    </style>
+
+    <!--    History-->
+    <style name="historyTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">History</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--    All Cafe-->
+    <style name="allCafeTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">All Cafe</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
     </style>

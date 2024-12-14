@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     alias(libs.plugins.googleGmsGoogleServices)
+    id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -56,13 +58,16 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.activity)
-    implementation(libs.firebase.auth)
     implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation (libs.translate)
+
+    //    Firebase
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.messaging)
 
     //VIEWPAGER
     implementation(libs.androidx.viewpager2)
@@ -83,7 +88,17 @@ dependencies {
     //RETROFIT GSON
     implementation(libs.converter.gson)
 
-//    Data Store
+    //    Data Store
     implementation(libs.androidx.datastore.preferences)
+    implementation (libs.androidx.datastore)
+
+    //    Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.room.compiler)
+
+    //    Coroutines
+    implementation(libs.coroutines)
+    implementation(libs.kotlinx.coroutines.core)
 
 }

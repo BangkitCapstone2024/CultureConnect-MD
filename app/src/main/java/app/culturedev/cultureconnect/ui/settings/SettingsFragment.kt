@@ -37,6 +37,7 @@ class SettingsFragment : Fragment() {
         vm.getSession().observe(viewLifecycleOwner) { user ->
             binding.edtUsername.setText(user.username)
             binding.tvUsername.text = user.username
+            binding.edtEmailUser.setText(user.email)
         }
     }
 

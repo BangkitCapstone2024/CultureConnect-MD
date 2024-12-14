@@ -2,39 +2,34 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="30dp"
     android:background="@color/white"
     tools:context=".ui.recomendation.MoodResultActivity">
 
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="159dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/poppins"
+        android:id="@+id/moodResultTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/hasil_mood"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        style=""
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/ivMoodResult"
-        android:layout_width="280dp"
-        android:layout_height="242dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/profiles"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        android:src="@drawable/image_mood_result_ex"
+        app:layout_constraintTop_toBottomOf="@id/moodResultTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/tvQuoteMood"
@@ -60,17 +55,15 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/btnGetRecCafe"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivMoodResult"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnGetRecCafe"/>
 
     <Button
         android:id="@+id/btnGetRecCafe"
-        android:layout_width="339dp"
-        android:layout_height="53dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="301dp"
         android:layout_marginBottom="36dp"
         android:backgroundTint="#1B3E3B"
