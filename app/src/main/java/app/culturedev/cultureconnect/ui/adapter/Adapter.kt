@@ -7,13 +7,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import app.culturedev.cultureconnect.R
+import app.culturedev.cultureconnect.data.database.DataEntity
 import app.culturedev.cultureconnect.data.response.ListDataItem
 import app.culturedev.cultureconnect.databinding.ListItemBinding
 import app.culturedev.cultureconnect.helper.Utils
 import app.culturedev.cultureconnect.ui.detail.DetailActivity
 import com.bumptech.glide.Glide
 
-class Adapter: ListAdapter<ListDataItem, Adapter.ViewHolder>(DIFF_CALLBACK){
+class Adapter : ListAdapter<ListDataItem, Adapter.ViewHolder>(DIFF_CALLBACK){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

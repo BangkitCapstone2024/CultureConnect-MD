@@ -25,7 +25,7 @@
     <style name="fabBookmark">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:src">@drawable/baseline_bookmark_24</item>
+        <item name="android:src">@drawable/baseline_bookmark_border_24</item>
         <item name="android:backgroundTint">@color/white</item>
         <item name="fabCustomSize">35dp</item>
     </style>
@@ -153,7 +153,7 @@
         <item name="android:layout_height">120dp</item>
         <item name="android:layout_marginTop">40dp</item>
         <item name="android:contentDescription">App Logo</item>
-        <item name="android:src">@drawable/img</item>
+        <item name="android:src">@drawable/logo_capstone_project</item>
     </style>
 
     <style name="emailLayout">
@@ -381,10 +381,18 @@
         <item name="android:textColor">@color/gray</item>
     </style>
 
+    <style name="tv_recommendation_category">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Kedai Kopi</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
     <style name="tv_recommendation_price">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">Kedai Kopi - Rp 25-50 rb</item>
+        <item name="android:text">Rp 25-50 rb</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/gray</item>
     </style>
@@ -492,6 +500,44 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/gray</item>
         <item name="android:layout_marginStart">10dp</item>
+    </style>
+
+    <style name="detailScheduleTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Cafe Schedule</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="detailSchedule">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Monday - Sunday, 08.00 - 22.00</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="detailMenuTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Menu</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="detailMenu">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">Coffee, Tea, Cake, Snack</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_marginTop">10dp</item>
     </style>
 
     <!--    Favorite Fragment-->

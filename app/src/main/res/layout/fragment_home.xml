@@ -146,6 +146,7 @@
         android:id="@+id/recommendation_progress_bar"
         android:layout_width="85dp"
         android:layout_height="85dp"
+        android:visibility="gone"
         app:layout_constraintTop_toTopOf="@id/rvRecommendation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -165,7 +166,7 @@
             style="@style/itemTitle"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
             android:id="@+id/seeMoreAllCafe"

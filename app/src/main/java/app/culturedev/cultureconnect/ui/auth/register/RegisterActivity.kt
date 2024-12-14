@@ -36,8 +36,8 @@ class RegisterActivity : AppCompatActivity() {
         if (!NetworkUtil.isOnline(this)) {
             NetworkUtil.netToast(this)
         }
-        handleRegistration()
         animation()
+        handleRegistration()
         binding.progressBarRegister.visibility = View.INVISIBLE
     }
 

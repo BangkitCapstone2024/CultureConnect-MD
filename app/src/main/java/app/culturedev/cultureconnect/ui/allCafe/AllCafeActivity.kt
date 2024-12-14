@@ -4,14 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.culturedev.cultureconnect.R
+import app.culturedev.cultureconnect.data.result.ResultCafe
 import app.culturedev.cultureconnect.databinding.ActivityAllCafeBinding
 import app.culturedev.cultureconnect.ui.MainActivity
 import app.culturedev.cultureconnect.ui.adapter.Adapter
+import app.culturedev.cultureconnect.ui.adapter.ListCafeAdapter
 import app.culturedev.cultureconnect.ui.viewmodel.AllCafeViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.factory.FactoryViewModel
 
@@ -28,26 +32,16 @@ class AllCafeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupRecyclerView()
-        setupObservers()
         backButton()
         setupSearchView()
         setupFilterButton()
+        getAllCafe()
     }
 
     private fun setupRecyclerView() {
-        binding.rvHistory.apply {
+        binding.rvAllCafe.apply {
             layoutManager = LinearLayoutManager(this@AllCafeActivity)
             adapter = this@AllCafeActivity.adapter
-        }
-    }
-
-    private fun setupObservers() {
-        allCafeViewModel.listAllCafe.observe(this) { cafes ->
-            adapter.submitList(cafes)
-        }
-
-        allCafeViewModel.isLoading.observe(this) { isLoading ->
-            binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         }
     }
 
@@ -59,8 +53,7 @@ class AllCafeActivity : AppCompatActivity() {
     }
 
     private fun setupSearchView() {
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let { allCafeViewModel.filterCafes(it) }
                 return true
@@ -88,6 +81,31 @@ class AllCafeActivity : AppCompatActivity() {
                 true
             }
             popupMenu.show()
+        }
+    }
+
+    private fun getAllCafe() {
+        val listCafeAdapter = ListCafeAdapter()
+        allCafeViewModel.getAllCafeData().observe(this) { result ->
+            when (result) {
+                is ResultCafe.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+
+                is ResultCafe.Success -> {
+                    binding.progressBar.visibility = View.INVISIBLE
+                    listCafeAdapter.submitList(result.data.cafeData)
+                    binding.rvAllCafe.apply {
+                        layoutManager = LinearLayoutManager(context)
+                        adapter = listCafeAdapter
+                    }
+                }
+
+                is ResultCafe.Error -> {
+                    binding.progressBar.visibility = View.INVISIBLE
+                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 }
