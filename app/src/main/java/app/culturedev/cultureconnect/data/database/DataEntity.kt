@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "cafe_table")
 data class DataEntity(
-    @field:ColumnInfo(name = "id")
     @field:PrimaryKey
     val id: String,
 

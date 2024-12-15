@@ -1,5 +1,6 @@
 package app.culturedev.cultureconnect.ui.viewmodel.factory
 
+import android.app.Application
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -28,7 +29,7 @@ class RecommendationFactoryViewModel(private val repository: RecommendationRepos
             }
 
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
-                DetailViewModel(repository) as T
+                DetailViewModel(application = Application(), repository) as T
             }
 
             else -> {

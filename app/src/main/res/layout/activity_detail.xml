@@ -79,64 +79,90 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/detailContactLayout"
-                android:layout_width="wrap_content"
+                android:id="@+id/detailContactPriceLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 app:layout_constraintTop_toBottomOf="@id/detailAddress"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <ImageView
-                    android:id="@+id/contactImage"
-                    style="@style/detailImageContact"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/detailContactLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent">
 
-                <TextView
-                    android:id="@+id/detailContact"
-                    style="@style/detailContact"
+                    <ImageView
+                        android:id="@+id/contactImage"
+                        style="@style/detailImageContact"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/detailContact"
+                        style="@style/detailContact"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/contactImage"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/detailPriceLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="30dp"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/contactImage"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintStart_toEndOf="@id/detailContactLayout"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                        android:id="@+id/priceImage"
+                        style="@style/detailImagePrice"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/detailPrice"
+                        style="@style/detailPrice"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/priceImage"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/detailPriceLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="30dp"
-                app:layout_constraintTop_toBottomOf="@id/detailAddress"
-                app:layout_constraintStart_toEndOf="@id/detailContactLayout">
+            <TextView
+                android:id="@+id/detailscheduleTitle"
+                style="@style/detailScheduleTitle"
+                app:layout_constraintTop_toBottomOf="@id/detailContactPriceLayout"
+                app:layout_constraintStart_toStartOf="parent"/>
 
-                <ImageView
-                    android:id="@+id/priceImage"
-                    style="@style/detailImagePrice"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+            <TextView
+                android:id="@+id/detailSchedule"
+                style="@style/detailSchedule"
+                app:layout_constraintTop_toBottomOf="@id/detailscheduleTitle"
+                app:layout_constraintStart_toStartOf="parent"/>
 
-                <TextView
-                    android:id="@+id/detailPrice"
-                    style="@style/detailPrice"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/priceImage"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+            <TextView
+                android:id="@+id/detailMenuTitle"
+                style="@style/detailMenuTitle"
+                app:layout_constraintTop_toBottomOf="@id/detailSchedule"
+                app:layout_constraintStart_toStartOf="parent"/>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/detailMenu"
+                style="@style/detailMenu"
+                app:layout_constraintTop_toBottomOf="@id/detailMenuTitle"
+                app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ProgressBar
-            android:id="@+id/detail_progress_bar"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

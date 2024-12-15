@@ -14,6 +14,8 @@ object Utils {
     const val EXTRA_PRICE = "extra_price"
     const val EXTRA_RATING ="extra_rating"
     const val LIST_PLACE = "list_place"
+    const val EXTRA_SCHEDULE = "extra_schedule"
+    const val EXTRA_MENU = "extra_menu"
     fun showLoading(isLoading: Boolean, progressBar: ProgressBar) {
         progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }

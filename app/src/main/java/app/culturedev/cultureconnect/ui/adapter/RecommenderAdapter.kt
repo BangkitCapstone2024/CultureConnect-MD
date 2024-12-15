@@ -47,6 +47,8 @@ class RecommenderAdapter :
                 intent.putExtra(Utils.EXTRA_RATING, data.rating)
                 intent.putExtra(Utils.EXTRA_ADDRESS, data.address)
                 intent.putExtra(Utils.EXTRA_PRICE, data.price)
+                intent.putExtra(Utils.EXTRA_SCHEDULE, data.jadwal)
+                intent.putExtra(Utils.EXTRA_MENU, data.pilihanMakanan)
                 context.startActivity(intent)
             }
 
@@ -58,6 +60,8 @@ class RecommenderAdapter :
                 intent.putExtra(Utils.EXTRA_RATING, data.rating)
                 intent.putExtra(Utils.EXTRA_ADDRESS, data.address)
                 intent.putExtra(Utils.EXTRA_PRICE, data.price)
+                intent.putExtra(Utils.EXTRA_SCHEDULE, data.jadwal)
+                intent.putExtra(Utils.EXTRA_MENU, data.pilihanMakanan)
                 context.startActivity(intent)
             }
 

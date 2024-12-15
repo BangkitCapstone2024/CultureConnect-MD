@@ -41,7 +41,7 @@ class FactoryViewModel(private val repository: CafeRepo, private val recommendat
             }
 
             modelClass.isAssignableFrom(AllCafeViewModel::class.java) -> {
-                AllCafeViewModel(application = Application(), repository) as T
+                AllCafeViewModel(recommendationRepository) as T
             }
 
             modelClass.isAssignableFrom(SettingsViewModel::class.java) -> {

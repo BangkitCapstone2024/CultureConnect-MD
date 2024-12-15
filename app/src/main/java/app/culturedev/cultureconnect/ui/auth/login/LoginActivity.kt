@@ -37,8 +37,8 @@ class LoginActivity : AppCompatActivity() {
         if (!NetworkUtil.isOnline(this)) {
             NetworkUtil.netToast(this)
         }
-        toRegister()
         animation()
+        toRegister()
     }
 
     private fun toRegister() {

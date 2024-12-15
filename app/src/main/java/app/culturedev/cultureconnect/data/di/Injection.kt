@@ -13,16 +13,14 @@ object Injection {
     fun provideRepository(context: Context): CafeRepo {
         val pref = UserPreferences.getInstance(context.dataStore)
         val apiService = ApiConfig.getApiService()
-        return CafeRepo.getInstance(apiService, pref,)
+        return CafeRepo.getInstance(apiService, pref)
     }
 
     fun provideRecommendationRepository(context: Context): RecommendationRepository {
         val recommendationApiService = ApiConfig.getRecommendationService()
         val pref = UserPreferences.getInstance(context.dataStore)
-        val database = AppDatabase.getDatabase(context)
-        val favoriteDao = database.favoriteDao()
-        val historyDao = database.historyDao()
+        val dao = AppDatabase.getDatabase(context).cafeDao()
         val appExecutor = AppExecutor()
-        return RecommendationRepository.getInstance(recommendationApiService, pref, database, favoriteDao, historyDao, appExecutor)
+        return RecommendationRepository.getInstance(recommendationApiService, pref, dao, appExecutor)
     }
 }
