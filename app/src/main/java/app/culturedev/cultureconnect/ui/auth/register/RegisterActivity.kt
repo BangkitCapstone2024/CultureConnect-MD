@@ -16,6 +16,7 @@ import app.culturedev.cultureconnect.helper.NetworkUtil
 import app.culturedev.cultureconnect.ui.recomendation.DescribeMoodActivity
 import app.culturedev.cultureconnect.ui.viewmodel.RegisterViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.factory.FactoryViewModel
+import com.jakewharton.rxbinding2.widget.RxTextView
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -37,6 +38,15 @@ class RegisterActivity : AppCompatActivity() {
         }
         handleRegistration()
         binding.progressBarRegister.visibility = View.INVISIBLE
+
+        val passwordStream = RxTextView.textChanges(binding.edtRegisPassword)
+            .skipInitialValue()
+            .map { password ->
+                password.length < 8
+            }
+        passwordStream.subscribe {
+            showPasswordExistsAlert(it)
+        }
     }
 
     private fun handleRegistration() {
