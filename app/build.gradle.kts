@@ -11,7 +11,8 @@ android {
 
     defaultConfig {
         applicationId = "app.culturedev.cultureconnect"
-        minSdk = 29
+        minSdk = 28
+        //noinspection OldTargetApi
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
