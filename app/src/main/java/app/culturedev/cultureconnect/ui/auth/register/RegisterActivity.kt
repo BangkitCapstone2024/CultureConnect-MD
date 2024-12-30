@@ -3,6 +3,7 @@ package app.culturedev.cultureconnect.ui.auth.register
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -46,6 +47,15 @@ class RegisterActivity : AppCompatActivity() {
             }
         passwordStream.subscribe {
             showPasswordExistsAlert(it)
+        }
+
+        val emailStream = RxTextView.textChanges(binding.edtRegisEmail)
+            .skipInitialValue()
+            .map { email ->
+                !Patterns.EMAIL_ADDRESS.matcher(email).matches()
+            }
+        emailStream.subscribe {
+            showEmailExistsAlert(it)
         }
     }
 
