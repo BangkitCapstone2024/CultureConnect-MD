@@ -1,5 +1,6 @@
 package app.culturedev.cultureconnect.ui.auth.register
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -7,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import app.culturedev.cultureconnect.R
 import app.culturedev.cultureconnect.data.result.ResultCafe
 import app.culturedev.cultureconnect.databinding.ActivityRegisterBinding
 import app.culturedev.cultureconnect.helper.ColorUtils
@@ -21,6 +23,7 @@ class RegisterActivity : AppCompatActivity() {
         FactoryViewModel.getInstance(this)
     }
 
+    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -81,5 +84,23 @@ class RegisterActivity : AppCompatActivity() {
         binding.btnBackLogin.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
+    }
+
+    private fun showEmailExistsAlert(isEmail: Boolean) {
+        binding.edtRegisEmail.error = if (isEmail) getString(R.string.email_error) else null
+    }
+
+    private fun showPasswordExistsAlert(isPassword: Boolean) {
+        binding.edtRegisPassword.error =
+            if (isPassword) getString(R.string.password_error) else null
+    }
+
+    private fun showUsernameExistsAlert(isValid: Boolean) {
+        binding.edtRegisUsername.error = if (isValid) getString(R.string.username_error) else null
+    }
+
+    private fun showConfirmPasswordAlert(isConfirm: Boolean) {
+        binding.edtRegisPasswordConfir.error =
+            if (isConfirm) getString(R.string.confirpass_error) else null
     }
 }
