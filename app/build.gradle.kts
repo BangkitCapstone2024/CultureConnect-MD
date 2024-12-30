@@ -87,4 +87,7 @@ dependencies {
 //    Data Store
     implementation(libs.androidx.datastore.preferences)
 
+    //RXJAVA2
+    implementation(libs.rxjava)
+    implementation(libs.rxbinding)
 }
