@@ -18,6 +18,7 @@ import app.culturedev.cultureconnect.ui.recomendation.DescribeMoodActivity
 import app.culturedev.cultureconnect.ui.viewmodel.RegisterViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.factory.FactoryViewModel
 import com.jakewharton.rxbinding2.widget.RxTextView
+import io.reactivex.Observable
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -56,6 +57,21 @@ class RegisterActivity : AppCompatActivity() {
             }
         emailStream.subscribe {
             showEmailExistsAlert(it)
+        }
+
+        val passwordConfirmation = Observable.merge(
+            RxTextView.textChanges(binding.edtRegisPassword)
+                .map { password ->
+                    password.toString() != binding.edtRegisPasswordConfir.text.toString()
+                },
+            RxTextView.textChanges(binding.edtRegisPasswordConfir)
+                .map { confir ->
+                    confir.toString() != binding.edtRegisPassword.text.toString()
+                }
+        )
+
+        passwordConfirmation.subscribe {
+            showConfirmPasswordAlert(it)
         }
     }
 
