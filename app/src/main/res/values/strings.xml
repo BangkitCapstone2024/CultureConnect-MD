@@ -54,4 +54,9 @@
     <string name="settings">Settings</string>
     <string name="back"><![CDATA[<]]></string>
 
+    <!--    Registration-->
+    <string name="email_error">Email Not Valid </string>
+    <string name="password_error">Password Not Valid </string>
+    <string name="username_error">Username Not Valid </string>
+    <string name="confirpass_error">Password must be same</string>
 </resources>
