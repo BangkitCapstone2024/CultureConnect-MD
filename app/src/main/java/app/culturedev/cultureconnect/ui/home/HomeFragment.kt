@@ -35,6 +35,7 @@ class HomeFragment : Fragment() {
     }
     private lateinit var recommendationAdapter: Adapter
     private lateinit var allCafeAdapter: Adapter
+    private val listCafeAdapter = ListCafeAdapter()
 
 
     override fun onCreateView(
@@ -67,26 +68,25 @@ class HomeFragment : Fragment() {
         }
 
         ColorUtils.changeStatusBarColor(requireActivity().window, "#1B3E3B")
-        setupSearchView()
-        btnHistory()
-        btnNotification()
-        toMoodBased()
-        getAllCafe()
-        getUsername()
-        btnSeeMoreAllCafe()
-        btnSeeMoreRecommendation()
-    }
 
-    private fun setupSearchView() {
+        binding.seeMoreAllCafe.setOnClickListener {
+            val intent = Intent(requireContext(), AllCafeActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.seeMoreRecommendation.setOnClickListener {
+            val intent = Intent(requireContext(), CafeResultActivity::class.java)
+            startActivity(intent)
+        }
+
+
         binding.searchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 val intent = Intent(requireContext(), AllCafeActivity::class.java)
                 startActivity(intent)
             }
         }
-    }
 
-    private fun btnHistory() {
         binding.btnHistory.setOnClickListener {
             vm.getSession().observe(viewLifecycleOwner) {
                 if (it.sessionId.isEmpty()) {
@@ -96,21 +96,7 @@ class HomeFragment : Fragment() {
             }
             startActivity(Intent(requireContext(), HistoryActivity::class.java))
         }
-    }
 
-    private fun btnNotification() {
-        binding.btnNotification.setOnClickListener {
-            vm.getSession().observe(viewLifecycleOwner) {
-                if (it.sessionId.isEmpty()) {
-                    val intent = Intent(requireContext(), LoginActivity::class.java)
-                    startActivity(intent)
-                }
-            }
-            startActivity(Intent(requireContext(), NotificationActivity::class.java))
-        }
-    }
-
-    private fun toMoodBased() {
         binding.btnRecommendation.setOnClickListener {
             vm.getSession().observe(viewLifecycleOwner) {
                 if (it.sessionId.isEmpty()) {
@@ -122,10 +108,24 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-    }
 
-    private fun getAllCafe() {
-        val listCafeAdapter = ListCafeAdapter()
+        binding.btnNotification.setOnClickListener {
+            vm.getSession().observe(viewLifecycleOwner) {
+                if (it.sessionId.isEmpty()) {
+                    val intent = Intent(requireContext(), LoginActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            startActivity(Intent(requireContext(), NotificationActivity::class.java))
+        }
+
+        vm.getSession().observe(viewLifecycleOwner) {
+            if (it.sessionId.isEmpty()) {
+                binding.username.text = getString(R.string.username)
+            } else {
+                binding.username.text = it.username
+            }
+        }
         vm.getAllCafeData().observe(viewLifecycleOwner) { result ->
             when (result) {
                 is ResultCafe.Loading -> {
@@ -146,30 +146,6 @@ class HomeFragment : Fragment() {
                     Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
                 }
             }
-        }
-    }
-
-    private fun getUsername() {
-        vm.getSession().observe(viewLifecycleOwner) {
-            if (it.sessionId.isEmpty()) {
-                binding.username.text = getString(R.string.username)
-            } else {
-                binding.username.text = it.username
-            }
-        }
-    }
-
-    private fun btnSeeMoreRecommendation() {
-        binding.seeMoreRecommendation.setOnClickListener {
-            val intent = Intent(requireContext(), CafeResultActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
-    private fun btnSeeMoreAllCafe() {
-        binding.seeMoreAllCafe.setOnClickListener {
-            val intent = Intent(requireContext(), AllCafeActivity::class.java)
-            startActivity(intent)
         }
     }
 }
