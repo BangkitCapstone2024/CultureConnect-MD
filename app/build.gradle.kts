@@ -102,4 +102,7 @@ dependencies {
     implementation(libs.coroutines)
     implementation(libs.kotlinx.coroutines.core)
 
+    //RXJAVA2
+    implementation(libs.rxjava)
+    implementation(libs.rxbinding)
 }
