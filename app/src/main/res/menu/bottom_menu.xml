@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/home"
-        android:icon="@drawable/baseline_home_filled_24"
+        android:icon="@drawable/home_icon"
         android:title="@string/home" />
 
     <item
         android:id="@+id/maps"
-        android:icon="@drawable/baseline_map_24"
+        android:icon="@drawable/maps_icon"
         android:title="@string/maps" />
 
     <item
         android:id="@+id/favorite"
-        android:icon="@drawable/baseline_bookmark_24"
+        android:icon="@drawable/bookmark_icon"
         android:title="@string/favorite" />
 
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/profiles"
+        android:icon="@drawable/profile_icon"
         android:title="@string/profile">
     </item>
 </menu>

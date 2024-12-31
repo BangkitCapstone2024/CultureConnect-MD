@@ -17,6 +17,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         dataStore.edit {
             it[USERNAME] = user.username
             it[SESSION_ID] = user.sessionId
+            it[EMAIL] = user.email ?: ""
         }
     }
 
@@ -24,7 +25,8 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
         return dataStore.data.map {
             UserModel(
                 it[USERNAME] ?: "",
-                it[SESSION_ID] ?: ""
+                it[SESSION_ID] ?: "",
+                it[EMAIL]
             )
         }
     }
@@ -39,6 +41,7 @@ class UserPreferences private constructor(private val dataStore: DataStore<Prefe
     companion object {
         private val SESSION_ID = stringPreferencesKey("token")
         private val USERNAME = stringPreferencesKey("username")
+        private val EMAIL = stringPreferencesKey("email")
 
         @Volatile
         private var instance: UserPreferences? = null

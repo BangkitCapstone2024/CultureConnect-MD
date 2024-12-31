@@ -1,5 +1,6 @@
 package app.culturedev.cultureconnect.ui.detail
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,19 +12,15 @@ import app.culturedev.cultureconnect.helper.NetworkUtil.isOnline
 import app.culturedev.cultureconnect.helper.NetworkUtil.netToast
 import app.culturedev.cultureconnect.helper.Utils
 import com.bumptech.glide.Glide
+import app.culturedev.cultureconnect.ui.MainActivity
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         if (!isOnline(this)) {
             netToast(this)
@@ -33,7 +30,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun navigateUp() {
-        binding.detailBackBtn.setOnClickListener {
+        binding.btnBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
     }
@@ -48,8 +45,8 @@ class DetailActivity : AppCompatActivity() {
             .load(cafeImage)
             .into(binding.detailImage)
         binding.detailTitle.text = cafeName
-        binding.tvRating.text = rating
-        binding.tvAlamat.text = address
-        binding.tvPrice.text  = price
+        binding.detailRating.text = rating
+        binding.detailAddress.text = address
+        binding.detailPrice.text  = price
     }
 }

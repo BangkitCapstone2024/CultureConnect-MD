@@ -31,7 +31,7 @@
     <string name="nama_lengkap_anda">Nama Lengkap anda</string>
     <string name="email_anda">Email Anda</string>
     <string name="logout">Logout</string>
-<!--    <string name="back"><![CDATA[<]]></string>-->
+    <!--    <string name="back"><![CDATA[<]]></string>-->
     <string name="data_akun">Data Akun</string>
     <string name="Nama">Nama</string>
     <string name="belum_punya_akun_daftar">Belum punya akun ? daftar</string>
@@ -42,7 +42,7 @@
     <string name="kirim">Kirim</string>
     <string name="hasil_mood">Mood Results</string>
     <string name="kata_kata">Words</string>
-    <string name="cari_tempat_sesuai_mood">CARI TEMPAT SESUAI MOOD</string>
+    <string name="cari_tempat_sesuai_mood">Mood Based Recommendation</string>
     <string name="cafe_recommendations">Cafe Recommendations</string>
     <string name="search">Search</string>
     <string name="search_hint">Search here …</string>
@@ -59,4 +59,13 @@
     <string name="password_error">Password Not Valid </string>
     <string name="username_error">Username Not Valid </string>
     <string name="confirpass_error">Password must be same</string>
+  
+    <!--    Sort Menu-->
+    <string name="sort_name_asc">Name Ascending</string>
+    <string name="sort_name_desc">Name Descending</string>
+    <string name="sort_category">Category</string>
+    <string name="sort_price">Price</string>
+    <string name="sort_rating">Rating</string>
+
+  
 </resources>

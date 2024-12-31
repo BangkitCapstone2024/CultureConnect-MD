@@ -2,9 +2,12 @@ package app.culturedev.cultureconnect.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
+import app.culturedev.cultureconnect.data.database.Dao
+import app.culturedev.cultureconnect.data.database.DataEntity
 import app.culturedev.cultureconnect.data.model.UserModel
 import app.culturedev.cultureconnect.data.preferences.UserPreferences
 import app.culturedev.cultureconnect.data.remote.api.ApiService
+import app.culturedev.cultureconnect.data.response.ListDataItem
 import app.culturedev.cultureconnect.data.response.login.LoginRequest
 import app.culturedev.cultureconnect.data.response.login.LoginResponse
 import app.culturedev.cultureconnect.data.response.logout.LogoutRequest
@@ -12,11 +15,20 @@ import app.culturedev.cultureconnect.data.response.logout.LogoutResponse
 import app.culturedev.cultureconnect.data.response.register.RegisterRequest
 import app.culturedev.cultureconnect.data.response.register.RegisterResponse
 import app.culturedev.cultureconnect.data.result.ResultCafe
+import app.culturedev.cultureconnect.helper.AppExecutor
 import com.google.gson.Gson
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
-class CafeRepo(private val apiService: ApiService, private val userPreferences: UserPreferences) {
+class CafeRepo private constructor(
+    private val apiService: ApiService,
+    private val userPreferences: UserPreferences
+) {
+
     fun getSession(): Flow<UserModel> {
         return userPreferences.getSession()
     }
@@ -33,7 +45,8 @@ class CafeRepo(private val apiService: ApiService, private val userPreferences: 
             userPreferences.saveSession(
                 UserModel(
                     username = request.username ?: "",
-                    sessionId = response.sessionId ?: ""
+                    sessionId = response.sessionId ?: "",
+                    email = email
                 )
             )
             emit(ResultCafe.Success(response))
@@ -85,7 +98,6 @@ class CafeRepo(private val apiService: ApiService, private val userPreferences: 
         userPreferences.logout()
     }
 
-
     companion object {
         @Volatile
         private var instance: CafeRepo? = null
@@ -94,7 +106,7 @@ class CafeRepo(private val apiService: ApiService, private val userPreferences: 
             userPreference: UserPreferences
         ): CafeRepo =
             instance ?: synchronized(this) {
-                instance ?: CafeRepo(apiService, userPreference)
+                instance ?: CafeRepo (apiService, userPreference)
             }.also { instance = it }
     }
 }
