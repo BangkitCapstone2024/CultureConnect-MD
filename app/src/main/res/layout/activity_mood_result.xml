@@ -26,7 +26,7 @@
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/image_mood_result_ex"
+        android:src="@drawable/img"
         app:layout_constraintTop_toBottomOf="@id/moodResultTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -1,12 +1,11 @@
 package app.culturedev.cultureconnect.ui.auth.register
 
-import android.annotation.SuppressLint
-import android.os.Bundle
-import android.util.Patterns
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.util.Log
+import android.os.Bundle
+import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -22,7 +21,6 @@ import app.culturedev.cultureconnect.ui.viewmodel.RegisterViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.factory.FactoryViewModel
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
-import com.google.firebase.auth.FirebaseUser
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -46,7 +44,7 @@ class RegisterActivity : AppCompatActivity() {
         animation()
         binding.progressBarRegister.visibility = View.INVISIBLE
 
-        val passwordStream = RxTextView.textChanges(binding.edtRegisPassword)
+        val passwordStream = RxTextView.textChanges(binding.edtRegisterPassword)
             .skipInitialValue()
             .map { password ->
                 password.length < 8
@@ -55,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
             showPasswordExistsAlert(it)
         }
 
-        val emailStream = RxTextView.textChanges(binding.edtRegisEmail)
+        val emailStream = RxTextView.textChanges(binding.edtRegisterEmail)
             .skipInitialValue()
             .map { email ->
                 !Patterns.EMAIL_ADDRESS.matcher(email).matches()
@@ -65,13 +63,13 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         val passwordConfirmation = Observable.merge(
-            RxTextView.textChanges(binding.edtRegisPassword)
+            RxTextView.textChanges(binding.edtRegisterPassword)
                 .map { password ->
-                    password.toString() != binding.edtRegisPasswordConfir.text.toString()
+                    password.toString() != binding.edtRegisPasswordConfirm.text.toString()
                 },
-            RxTextView.textChanges(binding.edtRegisPasswordConfir)
+            RxTextView.textChanges(binding.edtRegisPasswordConfirm)
                 .map { confir ->
-                    confir.toString() != binding.edtRegisPassword.text.toString()
+                    confir.toString() != binding.edtRegisPasswordConfirm.text.toString()
                 }
         )
 
@@ -128,23 +126,23 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun showEmailExistsAlert(isEmail: Boolean) {
-        binding.edtRegisEmail.error = if (isEmail) getString(R.string.email_error) else null
+        binding.edtRegisterEmail.error = if (isEmail) getString(R.string.email_error) else null
     }
 
     private fun showPasswordExistsAlert(isPassword: Boolean) {
-        binding.edtRegisPassword.error =
+        binding.edtRegisterPassword.error =
             if (isPassword) getString(R.string.password_error) else null
     }
 
     private fun showUsernameExistsAlert(isValid: Boolean) {
-        binding.edtRegisUsername.error = if (isValid) getString(R.string.username_error) else null
+        binding.edtRegisterName.error = if (isValid) getString(R.string.username_error) else null
     }
 
     private fun showConfirmPasswordAlert(isConfirm: Boolean) {
-        binding.edtRegisPasswordConfir.error =
+        binding.edtRegisPasswordConfirm.error =
             if (isConfirm) getString(R.string.confirpass_error) else null
     }
-    
+
     private fun animation() {
         val title = ObjectAnimator.ofFloat(binding.registerTitle, View.ALPHA, 1f).setDuration(400)
         val nameLayout =
@@ -160,14 +158,15 @@ class RegisterActivity : AppCompatActivity() {
         val passwordEdit =
             ObjectAnimator.ofFloat(binding.edtRegisterPassword, View.ALPHA, 1f).setDuration(400)
         val confirmPasswordLayout =
-            ObjectAnimator.ofFloat(binding.registerPasswordConfirmLayout, View.ALPHA, 1f).setDuration(400)
+            ObjectAnimator.ofFloat(binding.registerPasswordConfirmLayout, View.ALPHA, 1f)
+                .setDuration(400)
         val confirmPasswordEdit =
             ObjectAnimator.ofFloat(binding.edtRegisPasswordConfirm, View.ALPHA, 1f).setDuration(400)
         val signup = ObjectAnimator.ofFloat(binding.btnRegister, View.ALPHA, 1f).setDuration(400)
 
         val usernameAnimations = AnimatorSet().apply {
             playTogether(
-                nameLayout,nameEdit
+                nameLayout, nameEdit
             )
         }
         val emailAnimations = AnimatorSet().apply {

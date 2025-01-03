@@ -5,7 +5,6 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +17,6 @@ import app.culturedev.cultureconnect.ui.recomendation.DescribeMoodActivity
 import app.culturedev.cultureconnect.ui.viewmodel.LoginViewModel
 import app.culturedev.cultureconnect.ui.viewmodel.factory.FactoryViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.auth.FirebaseUser
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -38,7 +36,6 @@ class LoginActivity : AppCompatActivity() {
             NetworkUtil.netToast(this)
         }
         toRegister()
-        animation()
     }
 
     private fun toRegister() {

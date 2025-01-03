@@ -1,18 +1,12 @@
 package app.culturedev.cultureconnect.ui.detail
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import app.culturedev.cultureconnect.R
 import app.culturedev.cultureconnect.databinding.ActivityDetailBinding
 import app.culturedev.cultureconnect.helper.NetworkUtil.isOnline
 import app.culturedev.cultureconnect.helper.NetworkUtil.netToast
 import app.culturedev.cultureconnect.helper.Utils
 import com.bumptech.glide.Glide
-import app.culturedev.cultureconnect.ui.MainActivity
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
@@ -35,7 +29,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun fetchDetailCafe(){
+    private fun fetchDetailCafe() {
         val cafeImage = intent.getStringExtra(Utils.EXTRA_IMAGE)
         val cafeName = intent.getStringExtra(Utils.EXTRA_CAFE_NAME)
         val rating = intent.getStringExtra(Utils.EXTRA_RATING)
@@ -47,6 +41,6 @@ class DetailActivity : AppCompatActivity() {
         binding.detailTitle.text = cafeName
         binding.detailRating.text = rating
         binding.detailAddress.text = address
-        binding.detailPrice.text  = price
+        binding.detailPrice.text = price
     }
 }
